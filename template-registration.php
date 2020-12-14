@@ -8,7 +8,7 @@ if (is_user_logged_in()) {
 get_header(); ?>
 
 <section class="row">
-    <article id="content" class="c12" role="main">
+    <article id="content" class="col-xs-12 col-sm-9 col-md-6 mr-auto ml-auto" role="main">
 
         <?php the_content(); ?>
 

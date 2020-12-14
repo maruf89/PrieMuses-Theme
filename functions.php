@@ -1,6 +1,6 @@
 <?php
 
-define( 'PRIE_MUSES_VERSION', '2020.11' );
+define( 'PRIE_MUSES_VERSION', '202012' );
 
 function dump($var) {
   echo '<pre>' . print_r($var) . '</pre>';
@@ -35,16 +35,34 @@ function priemuses_setup() {
     register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'priemuses' ) ) );
 }
 
+/**
+ * Register our sidebars and widgetized areas.
+ *
+ */
+function priemuses_widgets_init() {
+
+    register_sidebar( array(
+        'name'          => 'Home Page',
+        'id'            => 'home_page_widget',
+        'before_widget' => '<div class="home-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="rounded">',
+        'after_title'   => '</h2>',
+    ) );
+
+}
+add_action( 'widgets_init', 'priemuses_widgets_init' );
+
 add_action( 'wp_enqueue_scripts', 'priemuses_load_scripts' );
 function priemuses_load_scripts() {
 
     $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
     $assets_uri = get_stylesheet_directory_uri() . '/assets';
-
-    wp_enqueue_style( 'priemuses-base-style', get_stylesheet_uri() , WP_ENV == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
-    wp_enqueue_style( 'priemuses-style', "$assets_uri/css/style.css" , WP_ENV == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
-    wp_enqueue_style( 'bootstrap', "$assets_uri/css/bootstrap" . $suffix . '.css' , WP_ENV == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
+    
+    wp_enqueue_style( 'priemuses-base-style', get_stylesheet_uri() , wp_get_environment_type() == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
+    wp_enqueue_style( 'priemuses-style', "$assets_uri/css/style.css" , wp_get_environment_type() == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
+    wp_enqueue_style( 'bootstrap', "$assets_uri/css/bootstrap" . $suffix . '.css' , wp_get_environment_type() == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
     wp_enqueue_script( 'jquery' );
 }
 

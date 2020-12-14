@@ -10,7 +10,7 @@
 <?php //wp_body_open hook if WordPress 5.2
     if ( function_exists( 'wp_body_open' ) ) { wp_body_open(); } ?>
 <a class="screen-reader-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'prie-muses' ); ?>"><?php _e( 'Skip to content', 'prie-muses' ); ?></a>
-<div class="container-fluid">
+<div class="container-fluid main-content">
     <header class="page-header container">
         <div class="row">
             <section id="masthead" class="col-xs-12 col-md-8" role="banner">

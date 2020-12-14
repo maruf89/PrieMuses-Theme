@@ -3,8 +3,8 @@
 }
 
 .access {
-    background: black;
-    margin:          0;
+    background: #1a234e;
+    margin:          0 0 2em 0;
     position:        relative;
     z-index:         500;
     font-size:       1.138em;
@@ -108,3 +108,49 @@
     background: grey;
     margin: .5em 0;
 }
+
+.nav-footer {
+    background: #1a234e;
+    color: #fff;
+}
+
+
+
+/** Content */
+
+.main-content {
+    margin-bottom: 2em;
+}
+
+
+/** Community Directory */
+
+.location-list {
+    margin-bottom: 2em;
+}
+
+.location-list .img-container {
+    margin: 0 auto;
+    padding-bottom: 40%;
+    width: 100%;
+    background-size: cover !important;
+}
+
+.location-list .text {
+    margin-top: 1em;
+}
+
+/** single-cd-entity.php */
+.profile-div {
+    padding-bottom: 40%;
+    background-size: cover !important;
+    width: 50%;
+    margin: 0 auto 1.5em;
+}
+
+/** Offers & Needs Widget */
+.offers-needs-hashtags {
+    text-align: center;
+    margin-bottom: 3em;
+}
+    
