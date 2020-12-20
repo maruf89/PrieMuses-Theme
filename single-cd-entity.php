@@ -45,7 +45,10 @@ $photo = $entity->get_featured();
                     <p><b><?= __( 'Contact Telephone', 'community-directory' ) ?>:</b> <?= $entity->get_acf_tel(); ?></p>
                 <?php endif; ?>
                 <?php if ( !empty( $entity->get_acf_website() ) ): ?>
-                    <p><b><?= __( 'Contact Telephone', 'community-directory' ) ?>:</b> <?= $entity->get_acf_website(); ?></p>
+                    <p><b><?= __( 'Website', 'community-directory' ) ?>:</b> <?= $entity->get_acf_website(); ?></p>
+                <?php endif; ?>
+                <?php if ( !empty( $entity->get_acf_facebook() ) ): ?>
+                    <p><b><?= __( 'Facebook', 'community-directory' ) ?>:</b> <?= $entity->get_acf_facebook(); ?></p>
                 <?php endif; ?>
             </div>
         </div>
