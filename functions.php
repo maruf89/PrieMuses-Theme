@@ -140,3 +140,15 @@ function my_acf_google_map_api( $api ){
 }
 
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+class SentryErrorHandler {
+    public function handle_exception( \WP_Error $error ):int {
+        \Sentry\captureException( $error );
+    }
+}
+
+function register_sentry_error_handler( $class_instance, string $register_method ) {
+    $class_instance::{$register_method}( new SentryErrorHandler() );
+}
+
+add_action( 'community_directory_register_error_handler', 'register_sentry_error_handler', 10, 2 );
