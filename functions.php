@@ -132,7 +132,7 @@ add_filter( 'wp_nav_menu_args', 'my_wp_nav_menu_args' );
 
 function my_acf_google_map_api( $api ){
     
-    $api['key'] = 'AIzaSyCVBrph-OJbPXQAXiGkanJmFvoa0chCD1k';
+    $api['key'] = GOOGLE_API_KEY;
 
     
     return $api;
