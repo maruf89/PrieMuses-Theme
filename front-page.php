@@ -2,8 +2,6 @@
 
 get_header();
 
-$locations = community_directory_get_locations( true, true );
-
 ?>
 
     <main id="content" class="container">
