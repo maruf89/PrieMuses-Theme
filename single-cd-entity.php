@@ -36,7 +36,7 @@ $photo = $entity->get_featured();
 
         <div class="row mb-5 text-center">
             <div class="col-xs-12 col-sm-6 mr-auto ml-auto">
-                <h2><?= __( 'Preferred Method of Contact' ) ?></h2>
+                <h2><?= __( 'Preferred Method of Contact', 'community-directory' ) ?></h2>
                 <p><?= $entity->get_acf_contact_method() ?></p>
                 <?php if ( !empty( $entity->get_acf_email() ) ): ?>
                     <p><b><?= __( 'Contact Email', 'community-directory' ) ?>:</b> <?= $entity->get_acf_email(); ?></p>
