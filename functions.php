@@ -1,5 +1,7 @@
 <?php
 
+require_once( __DIR__ . '/includes/NonceGenerator.php' );
+
 define( 'PRIE_MUSES_VERSION', '202012' );
 
 function dump($var) {
@@ -152,3 +154,16 @@ function register_sentry_error_handler( $class_instance, string $register_method
 }
 
 add_action( 'community_directory_register_error_handler', 'register_sentry_error_handler', 10, 2 );
+
+function add_nonce_to_script( $tag, $handle, $source ) {
+    $nonce_generator = NonceGenerator::get_instance();
+    
+    $search = '/(src=\'[^\']+\')/';
+    $replace = '$1 nonce="' . $nonce_generator->get_nonce() . '"';
+    $subject = $tag;
+
+    $output = preg_replace( $search, $replace, $subject);
+    return $output;
+}
+
+add_filter( 'script_loader_tag', 'add_nonce_to_script', 10, 3 );
