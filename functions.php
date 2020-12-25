@@ -1,18 +1,10 @@
 <?php
 
+use Maruf89\CommunityDirectory\Includes\ClassPublic;
+
 require_once( __DIR__ . '/includes/NonceGenerator.php' );
 
 define( 'PRIE_MUSES_VERSION', '202012' );
-
-function dump($var) {
-  echo '<pre>' . print_r($var) . '</pre>';
-}
-
-function console_log( $data ){
-  echo '<script>';
-  echo 'console.log('. json_encode( $data ) .')';
-  echo '</script>';
-}
 
 add_action( 'after_setup_theme', 'priemuses_setup' );
 function priemuses_setup() {
@@ -21,9 +13,42 @@ function priemuses_setup() {
     add_theme_support( 'automatic-feed-links' );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'html5', array( 'search-form' ) );
+    add_image_size( 'cd_thumb', 512, 205, true );
     global $content_width;
     if ( ! isset( $content_width ) ) { $content_width = 1920; }
     register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'priemuses' ) ) );
+}
+
+// add custom size to editor image size options
+function my_editor_image_sizes( $sizes ) {
+    $sizes = array_merge( $sizes, array(
+      'cd_thumb' => __( 'Community Directory Thumb Size' )
+    ));
+    return $sizes;
+}
+add_filter( 'image_size_names_choose', 'my_editor_image_sizes' );
+
+$templates_prefix = ClassPublic::get_template_hook_prefix();
+$prefix_len = strlen( ClassPublic::get_template_hook_prefix() );
+// add_filter( "${templates_prefix}location-list.php", 'load_cd_template', 11, 1 );
+add_filter( "${templates_prefix}elements/location-single-no-photo.php", 'load_cd_template', 11, 1 );
+add_filter( "${templates_prefix}elements/location-single.php", 'load_cd_template', 11, 1 );
+// add_filter( "${templates_prefix}offers-and-needs-no-results.php", 'load_cd_template', 11, 1 );
+// add_filter( "${templates_prefix}offers-and-needs-list.php", 'load_cd_template', 11, 1 );
+// add_filter( "${templates_prefix}offers_needs_hashtag_list.php", 'load_cd_template', 11, 1 );
+// add_filter( "${templates_prefix}elements/offer-need-single.php", 'load_cd_template', 11, 1 );
+add_filter( "${templates_prefix}elements/entity-single.php", 'load_cd_template', 11, 1 );
+// add_filter( "${templates_prefix}entity-list.php", 'load_cd_template', 11, 1 );
+// add_filter( "${templates_prefix}entity-list.php", 'load_cd_template', 11, 1 );
+
+
+function load_cd_template( string $template ):string {
+    // get name of current filter
+    // Will look something like: "community_directory_template_location-list.php"
+    $current = current_filter();
+    $file = substr( $current, strlen( ClassPublic::get_template_hook_prefix() ) );
+
+    return get_template_directory() . '/templates/' . $file;
 }
 
 /**
@@ -56,6 +81,8 @@ function priemuses_load_scripts() {
     wp_enqueue_style( 'bootstrap', "$assets_uri/css/bootstrap" . $suffix . '.css' , wp_get_environment_type() == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
     wp_enqueue_script( 'jquery' );
 }
+
+
 
 add_action( 'wp_footer', 'priemuses_footer_scripts' );
 function priemuses_footer_scripts() {
