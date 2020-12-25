@@ -14,6 +14,7 @@ function priemuses_setup() {
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'html5', array( 'search-form' ) );
     add_image_size( 'cd_thumb', 512, 205, true );
+    add_image_size( 'cd_thumb@2x', 1024, 410, true );
     global $content_width;
     if ( ! isset( $content_width ) ) { $content_width = 1920; }
     register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'priemuses' ) ) );

@@ -137,6 +137,10 @@
     background-size: cover !important;
 }
 
+.retina {
+    display: none;
+}
+
 .location-list .text {
     margin-top: 1em;
 }
@@ -176,5 +180,22 @@
 
 .hentry {
     margin: 0 auto;
+}
+
+@media only screen and ( -webkit-min-device-pixel-ratio: 1.3 ),
+       only screen and (    min--moz-device-pixel-ratio: 1.3 ),
+       only screen and (      -o-min-device-pixel-ratio: 2.6/2 ), /* returns 1.3, see Dev.Opera */
+       only screen and (         min-device-pixel-ratio: 1.3 ),
+       only screen and ( min-resolution: 124.8dpi ),
+       only screen and ( min-resolution: 1.3dppx ) {
+
+       .retina {
+           display: block;
+       }
+
+       .non-retina {
+            display: none;
+       }
+
 }
     
