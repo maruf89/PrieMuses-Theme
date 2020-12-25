@@ -6,7 +6,7 @@ $has_photo = $entity->get_acf_picture();
 
 <div class="entity col-xs-12 col-md-4 p-3 mb-3">
     <a href="<?= $entity->get_display_link( $entity ) ?>">
-    	<?php if ( $photo ): ?>
+    	<?php if ( $has_photo ): ?>
 	    	<div class="img-container non-retina" style="background: url(<?= $entity->get_featured( 'cd_thumb' ) ?>) no-repeat center;">
 	            <img class="d-none d-sm-none" src="<?= $entity->get_featured( 'cd_thumb' ) ?>" />
 	        </div>
