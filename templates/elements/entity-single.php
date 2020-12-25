@@ -1,7 +1,7 @@
 <?php
 
 $entity = $args[ 'entity' ];
-$has_photo = $entity->get_acf_image();
+$has_photo = $entity->get_acf_picture();
 ?>
 
 <div class="entity col-xs-12 col-md-4 p-3 mb-3">
