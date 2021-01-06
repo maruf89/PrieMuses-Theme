@@ -9,7 +9,7 @@ define( 'PRIE_MUSES_VERSION', '202012' );
 
 add_action( 'after_setup_theme', 'priemuses_setup' );
 function priemuses_setup() {
-    load_theme_textdomain( 'priemuses', get_template_directory() );
+    load_theme_textdomain( 'priemuses', get_template_directory() . '/languages' );
     add_theme_support( 'title-tag' );
     add_theme_support( 'automatic-feed-links' );
     add_theme_support( 'post-thumbnails' );
