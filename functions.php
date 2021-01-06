@@ -85,7 +85,7 @@ function priemuses_load_scripts() {
     wp_enqueue_script( 'priemuses-js', "$assets_uri/js/site.js", wp_get_environment_type() == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
     wp_localize_script( 'priemuses-js', 'pm_reCaptcha',
             array(
-                'key' => defined('RECAPTCHA_V3_KEY') ? RECAPTCHA_V3_KEY : ''
+                'key' => defined('RECAPTCHA_V2_KEY') ? RECAPTCHA_V2_KEY : ''
             )
         );
 }

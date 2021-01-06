@@ -114,6 +114,10 @@
     color: #fff;
 }
 
+#captcha_container {
+    margin-bottom: 1em;
+}
+
 
 
 /** Content */
