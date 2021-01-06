@@ -32,18 +32,6 @@ msgstr "Puslapis %s"
 msgid "Skip to content"
 msgstr "Peršokt iki turinio"
 
-#: include/registration.php:18
-msgid "Your town field cannot be left blank."
-msgstr "Tavo vieta negali būti palikta tuščia."
-
-#: include/registration.php:20
-msgid ""
-"You must select your town from the options, or if it&apos;s not available, "
-"select the checkbox and add it."
-msgstr ""
-"Turi išrinkti savo vietą iš sąrašo, arba jei nerandi, tada spustelk "
-"žymimąjį laukelį ir įrašyk naujam lauke."
-
 #: include/registration.php:52
 msgid "ERROR"
 msgstr "KLAIDA"

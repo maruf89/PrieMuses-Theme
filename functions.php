@@ -3,6 +3,7 @@
 use Maruf89\CommunityDirectory\Includes\ClassPublic;
 
 require_once( __DIR__ . '/includes/NonceGenerator.php' );
+require_once( __DIR__ . '/includes/reCaptcha.php' );
 
 define( 'PRIE_MUSES_VERSION', '202012' );
 
@@ -81,6 +82,12 @@ function priemuses_load_scripts() {
     wp_enqueue_style( 'priemuses-style', "$assets_uri/css/style.css" , wp_get_environment_type() == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
     wp_enqueue_style( 'bootstrap', "$assets_uri/css/bootstrap" . $suffix . '.css' , wp_get_environment_type() == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
     wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'priemuses-js', "$assets_uri/js/site.js", wp_get_environment_type() == 'production' ? PRIE_MUSES_VERSION : date("ymd-Gis"), 'all' );
+    wp_localize_script( 'priemuses-js', 'pm_reCaptcha',
+            array(
+                'key' => defined('RECAPTCHA_V3_KEY') ? RECAPTCHA_V3_KEY : ''
+            )
+        );
 }
 
 
