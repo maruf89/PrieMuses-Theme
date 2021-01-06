@@ -7,8 +7,8 @@ class pm_reCaptcha {
 	}
 
 	public function load_scripts() {
-		// new Object = 10;
-		wp_enqueue_script( 'reCaptcha', 'https://www.google.com/recaptcha/api.js', [], '2' );
+		$render_key = defined( 'RECAPTCHA_V3_KEY' ) ? '?render=' . RECAPTCHA_V3_KEY : '';
+		wp_enqueue_script( 'reCaptcha', "https://www.google.com/recaptcha/api.js$render_key", [], 'all' );
 	}
 
 }

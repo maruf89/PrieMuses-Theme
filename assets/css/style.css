@@ -118,12 +118,18 @@
     margin-bottom: 1em;
 }
 
-
-
 /** Content */
 
 .main-content {
     margin-bottom: 2em;
+}
+
+.registration {
+    text-align: center;
+}
+
+.registration h3.card-title {
+    display: none;
 }
 
 

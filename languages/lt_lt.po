@@ -2,36 +2,142 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PrieMuses\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-15 12:19+0200\n"
-"PO-Revision-Date: 2020-11-15 12:20+0200\n"
+"POT-Creation-Date: 2021-01-06 21:48+0200\n"
+"PO-Revision-Date: 2021-01-06 21:53+0200\n"
 "Last-Translator: Marius Miliunas\n"
 "Language-Team: Marius Miliunas\n"
 "Language: lt_LT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n:1,2;_n_noop:1,2;"
-"_nx:1,2;_x;_ex;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
+"19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
+"1 : 2);\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2,3;_n:1,2,3;__ngettext_noop:1,2,3;"
+"_n_noop:1,2,3;_c,_nc:4c,1,2,3;_x:1,2c,3;_nx:4c,1,2,3;_nx_noop:4c,1,2,3;"
+"_ex:1,2c,3;esc_attr__;esc_attr_e;esc_attr_x:1,2c,3c;esc_html__;esc_html_e;X-"
+"Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 2.4.2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 
-#: functions.php:61
-msgid "Primary Menu"
-msgstr "Pagrindinis Meniu"
+#: 404.php:8
+msgid "Not Found"
+msgstr ""
 
-#: functions.php:171
+#: 404.php:11
+msgid "Nothing found for the requested page. Try a search instead?"
+msgstr ""
+
+#: attachment.php:9
 #, php-format
-msgid "Page %s"
-msgstr "Puslapis %s"
+msgid "Return to %s"
+msgstr ""
 
-#: header.php:12 header.php:24
+#: attachment.php:9
+#, php-format
+msgid "%s Return to "
+msgstr ""
+
+#: entry-footer.php:2
+msgid "Categories: "
+msgstr ""
+
+#: entry-footer.php:4
+msgid "Comments"
+msgstr ""
+
+#: footer.php:6
+msgid "Y"
+msgstr ""
+
+#: functions.php:21
+msgid "Main Menu"
+msgstr ""
+
+#: functions.php:27
+msgid "Community Directory Thumb Size"
+msgstr ""
+
+#: header.php:12 header.php:28
 msgid "Skip to content"
 msgstr "Peršokt iki turinio"
 
-#: include/registration.php:52
-msgid "ERROR"
-msgstr "KLAIDA"
+#: nav-below.php:2
+#, php-format
+msgid "%s older"
+msgstr ""
+
+#: nav-below.php:3
+#, php-format
+msgid "newer %s"
+msgstr ""
+
+#: search.php:5
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: search.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: search.php:17
+msgid "Sorry, nothing matched your search. Please try again."
+msgstr ""
+
+#: single-cd-entity.php:39
+msgid "Preferred Method of Contact"
+msgstr ""
+
+#: single-cd-entity.php:42
+msgid "Contact Email"
+msgstr ""
+
+#: single-cd-entity.php:45
+msgid "Contact Telephone"
+msgstr ""
+
+#: single-cd-entity.php:48
+msgid "Website"
+msgstr ""
+
+#: single-cd-entity.php:51
+msgid "Facebook"
+msgstr ""
+
+#: single-cd-entity.php:58
+msgid "Offers"
+msgstr ""
+
+#: single-cd-entity.php:62
+msgid "Needs"
+msgstr ""
+
+#: template-registration.php:13
+msgid "Registration"
+msgstr "Registracija"
+
+#: template-registration.php:14
+msgid ""
+"Nothing that you post here will be made public, until you activate your "
+"profile upon successfull registration."
+msgstr ""
+"Niekas ką jūs čia išpildote nebus viešinta iki kol jūs sėkmingai sukursite "
+"paskyrą ir aktyvuosite ją."
+
+#: templates/elements/location-single-no-photo.php:3
+#: templates/elements/location-single.php:3 templates/location-single.php:3
+msgid "location"
+msgstr ""
+
+#~ msgid "Primary Menu"
+#~ msgstr "Pagrindinis Meniu"
+
+#, php-format
+#~ msgid "Page %s"
+#~ msgstr "Puslapis %s"
+
+#~ msgid "ERROR"
+#~ msgstr "KLAIDA"
