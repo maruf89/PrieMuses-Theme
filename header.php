@@ -27,10 +27,16 @@
                     <div class="screen-reader-text">
                         <a href="#content" title="<?php esc_attr_e( 'Skip to content', 'prie-muses' ); ?>"><?php esc_html_e( 'Skip to content', 'prie-muses' ); ?></a>
                     </div>
-                    <nav class="col-xs-12 col-md-8">
+                    <nav id="nav" class="nav-wrapper container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+                            </div>
 
-                        <?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-
+                            <div class="search-wrapper col-md-4">
+                                <?php get_template_part( 'templates/search', null, [ 'primary' => true ] ); ?>
+                            </div>
+                        </div>
                     </nav>
                 </div>
             </div>

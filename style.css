@@ -49,10 +49,6 @@ q:after {
     content:'"';font-style:normal
 }
 
-textarea,input[type="text"],input[type="button"],input[type="submit"],input[type="reset"],input[type="search"],input[type="password"] {
-    -webkit-appearance:none;appearance:none;border-radius:0
-}
-
 table {
     border-collapse:collapse;border-spacing:0
 }

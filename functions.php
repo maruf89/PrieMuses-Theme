@@ -18,7 +18,6 @@ if ( version_compare( $wp_version, '5.0', '<' ) || version_compare( PHP_VERSION,
      *
      * See http://www.php-fig.org/psr/psr-4/ for an explanation of the file structure.
      */
-    // require get_template_directory() . '/utilities/Autoloader.php';
     spl_autoload_register(
         function ( $class_name ) {
             if ( false !== strpos( $class_name, 'Maruf89\PrieMuses' ) ) {

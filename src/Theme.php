@@ -2,7 +2,7 @@
 
 namespace Maruf89\PrieMuses;
 
-use Maruf89\PrieMuses\Includes\{NonceGenerator, CDTemplateLoader};
+use Maruf89\PrieMuses\Includes\{NonceGenerator, CDTemplateLoader, CommunityDirectoryHelper};
 use Maruf89\PrieMuses\ThirdParty\ThirdParty;
 
 class Theme {
@@ -45,7 +45,6 @@ class Theme {
         $this->assets_uri = get_stylesheet_directory_uri() . '/assets';
         add_action( 'wp_enqueue_scripts', [ $this, 'addFrontendScripts' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'addFrontendStyles' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'dequeueDashicons' ] );
         add_action( 'widgets_init', [ $this, 'load_widgets' ] );
         add_action( 'wp_head', [ $this, 'pingback_header' ] );
         add_action( 'wp_footer', [ $this, 'load_footer_scripts' ] );
@@ -58,6 +57,7 @@ class Theme {
         add_filter( 'script_loader_tag', [ NonceGenerator::get_instance(), 'add_nonce_to_script' ], 10, 3 );
 
         $this->setup_template_loader();
+        $this->community_directory_helper = CommunityDirectoryHelper::get_instance();
 
         $this->third_party = new ThirdParty();
     }
@@ -116,9 +116,11 @@ class Theme {
     public function addFrontendStyles() {
         $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
         
-        wp_enqueue_style( 'priemuses-base-style', get_stylesheet_uri() , wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
-        wp_enqueue_style( 'priemuses-style', "$this->assets_uri/css/style.css" , wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
+        wp_enqueue_style( 'priemuses-base-style', get_stylesheet_uri() , [],wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis") );
+        wp_enqueue_style( 'priemuses-style', "$this->assets_uri/css/style.css" , [], wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"));
         wp_enqueue_style( 'bootstrap', "$this->assets_uri/css/bootstrap" . $suffix . '.css' , wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
+
+        wp_enqueue_style( 'dashicons' );
     }
 
     /**
@@ -126,11 +128,18 @@ class Theme {
      */
     public function addFrontendScripts() {
         wp_enqueue_script( 'jquery' );
-        wp_enqueue_script( 'priemuses-js', "$this->assets_uri/js/site.js", wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
-        wp_localize_script( 'priemuses-js', 'pm_reCaptcha',
-            array(
-                'key_v2' => defined('RECAPTCHA_V2_KEY') ? RECAPTCHA_V2_KEY : '',
-                'key_v3' => defined('RECAPTCHA_V3_KEY') ? RECAPTCHA_V3_KEY : '',
+        wp_enqueue_script( 'priemuses-js', "$this->assets_uri/js/site.js", [], 12312312312);// wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
+        wp_localize_script( 'priemuses-js', 'pm',
+            array_merge(
+                array(
+                    'recaptch' => [
+                        'key_v2' => defined('RECAPTCHA_V2_KEY') ? RECAPTCHA_V2_KEY : '',
+                        'key_v3' => defined('RECAPTCHA_V3_KEY') ? RECAPTCHA_V3_KEY : ''
+                    ],
+                    'wp_nonce' => wp_create_nonce( 'wp_rest' ),
+                    'ajax_url' => admin_url( 'admin-ajax.php' ),
+                ),
+                $this->community_directory_helper->get_array_vars()
             )
         );
     }
@@ -144,12 +153,6 @@ class Theme {
             'before_title'  => '<h2 class="rounded">',
             'after_title'   => '</h2>',
         ) );
-    }
-
-    public function dequeueDashicons() {
-        if ( ! is_user_logged_in() ) {
-            wp_deregister_style( 'dashicons' );
-        }
     }
 
     public function load_footer_scripts() {
