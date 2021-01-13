@@ -117,7 +117,7 @@ class Theme {
         $suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
         
         wp_enqueue_style( 'priemuses-base-style', get_stylesheet_uri() , [],wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis") );
-        wp_enqueue_style( 'priemuses-style', "$this->assets_uri/css/style.css" , [], wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"));
+        wp_enqueue_style( 'priemuses-style', "$this->assets_uri/dist/site.css" , [], wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"));
         wp_enqueue_style( 'bootstrap', "$this->assets_uri/css/bootstrap" . $suffix . '.css' , wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
 
         wp_enqueue_style( 'dashicons' );
@@ -128,7 +128,7 @@ class Theme {
      */
     public function addFrontendScripts() {
         wp_enqueue_script( 'jquery' );
-        wp_enqueue_script( 'priemuses-js', "$this->assets_uri/js/site.js", [], 12312312312);// wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
+        wp_enqueue_script( 'priemuses-js', "$this->assets_uri/dist/site.bundle.js", [], 12312312312);// wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
         wp_localize_script( 'priemuses-js', 'pm',
             array_merge(
                 array(

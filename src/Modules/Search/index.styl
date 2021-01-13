@@ -1,0 +1,96 @@
+.search-mod
+    float: right;
+
+.search-mod input
+    border-radius: 0;
+
+/*form*/.search-form-bg
+    background: #FFF;
+    overflow: hidden;
+    height: 41px;
+    border-radius: 0.25rem;
+
+.search-overlay
+    display: none;
+    z-index: -1;
+
+.search-overlay .inner-wrap
+    position: relative;
+    height: 100;
+    text-align: center;
+
+.search-overlay._appended
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    z-index: 9876;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+._appended .bg-color
+    background: rgba(140, 153, 161, .95);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+._appended .content
+    display: inline-block;
+    text-align: left;
+    margin-top: 5em;
+
+.search-form .form-group:first-of-type
+    width: 100%;
+    display: flex;
+
+.search-form .sep-box
+    background: #FFF;
+    border-radius: 0.25em;
+    padding: 1em;
+
+/**** Search Results   */
+
+.search-results-box,
+.loading-search,
+.empty-search-res,
+.search-res-title,
+._processing .search-res-container,
+._processing .empty-search-res
+    display: none;
+
+
+._processing .loading-search,
+._processing .search-results-box,
+._processed .search-results-box,
+._processed .search-res-title,
+._no-results .empty-search-res
+    display: block;
+
+
+.search-res-title
+    margin-bottom: 1em;
+
+/*a*/.search-result
+    display: flex;
+    padding: 1em;
+    border-radius: 0.25em;
+    border: 1px solid grey;
+    margin-bottom: 1em;
+
+/*a*/.search-result:last-of-type
+    margin: 0;
+    text-decoration: none;
+    color: inherit;
+
+.search-result /*figure*/.thumb
+    margin: 0 1em 0 0;
+
+.search-result /*h5*/.title
+    margin-bottom: .25em;
+
+.search-result p
+    margin: 0;
