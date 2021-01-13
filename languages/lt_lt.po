@@ -3,56 +3,64 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PrieMuses 2020.11\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/PrieMuses-"
-"Theme\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/PrieMuses-Theme\n"
+"POT-Creation-Date: 2021-01-13 14:18+0200\n"
+"PO-Revision-Date: 2021-01-13 14:20+0200\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: lt_LT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-01-06T20:33:04+00:00\n"
-"PO-Revision-Date: 2021-01-06 22:38+0200\n"
 "X-Generator: Poedit 2.4.2\n"
 "X-Domain: priemuses\n"
-"Last-Translator: \n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && (n%100<11 || n%100>19) ? "
-"0 : n%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
-"Language: lt_LT\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && (n%100<11 || n%100>19) ? 0 : n"
+"%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: assets\n"
 
-#. Theme Name of the theme
-msgid "PrieMuses"
+#: footer.php:6
+msgid "Y"
 msgstr ""
 
-#. Theme URI of the theme
-msgid "https://github.com/maruf89/priemuses"
+#: single-cd-entity.php:39
+msgid "Preferred Method of Contact"
+msgstr "Pageidaujamas Susisiekimo Būdas"
+
+#: single-cd-entity.php:42
+msgid "Contact Email"
 msgstr ""
 
-#. Description of the theme
-msgid "Direktorija Bendruomenems"
+#: single-cd-entity.php:45
+msgid "Contact Telephone"
 msgstr ""
 
-#. Author of the theme
-msgid "Maruf89"
+#: single-cd-entity.php:48
+msgid "Website"
 msgstr ""
 
-#. Author URI of the theme
-msgid "http://www.maruf-hops-maps.com;"
+#: single-cd-entity.php:51
+msgid "Facebook"
 msgstr ""
 
-#: functions.php:21
-msgid "Main Menu"
+#: single-cd-entity.php:58
+msgid "Offers"
 msgstr ""
 
-#. Template Name of the theme
-msgid "EditProfile"
-msgstr "Redaguokite Profilį"
+#: single-cd-entity.php:62
+msgid "Needs"
+msgstr ""
 
-#. Template Name of the theme
-msgid "Profile"
-msgstr "Profilis"
+#: src/Theme.php:76
+msgid "An unexpected error occured."
+msgstr ""
 
-#. Template Name of the theme
-msgid "Register"
-msgstr "Registruokite"
+#: src/Theme.php:225
+msgid "Community Directory Thumb Size"
+msgstr ""
 
 #: template-registration.php:13
 msgid "Registration"
@@ -63,5 +71,68 @@ msgid ""
 "Nothing that you post here will be made public, until you activate your "
 "profile upon successfull registration."
 msgstr ""
-"Niekas ką jūs čia išpildote nebus viešinta iki kol jūs sėkmingai "
-"sukursite paskyrą ir aktyvuosite ją."
+"Niekas ką jūs čia išpildote nebus viešinta iki kol jūs sėkmingai sukursite "
+"paskyrą ir aktyvuosite ją."
+
+#: templates/elements/location-single-no-photo.php:3
+#: templates/elements/location-single.php:3 templates/location-single.php:3
+msgid "location"
+msgstr ""
+
+#: templates/search.php:9 templates/search.php:32
+msgid "Search PrieMuses"
+msgstr "Paieškokite PrieMusėje"
+
+#: templates/search.php:13 templates/search.php:36
+msgid "Search"
+msgstr "Paieška"
+
+#: templates/search.php:41
+msgid "Search by…"
+msgstr "Paieškokite pagal…"
+
+#: templates/search.php:53
+msgid "Entities"
+msgstr "Nariai"
+
+#: templates/search.php:66
+msgid "Offers & Needs"
+msgstr "Pasiūlymai ir Poreikiai"
+
+#: templates/search.php:79
+msgid "Category"
+msgstr "Kategorija"
+
+#: templates/search.php:90
+msgid "Go!"
+msgstr "Davai!"
+
+#: templates/search.php:97
+msgid "Search Results"
+msgstr "Paieškos Rezultatai"
+
+#: templates/search.php:102
+msgid "There were no results that matched your search…"
+msgstr "Neradome tinkamų rezultatų…"
+
+#: templates/search.php:105
+msgid "Loading…"
+msgstr "Krauname…"
+
+#: utilities/backcompat.php:41 utilities/backcompat.php:58
+#: utilities/backcompat.php:81
+#, php-format
+msgid ""
+"The selected theme requires at least WordPress version %1$s and PHP version "
+"%2$s. You are running WordPress %3$s and PHP version %4$s. Please upgrade "
+"and try again."
+msgstr ""
+
+#~ msgid "EditProfile"
+#~ msgstr "Redaguokite Profilį"
+
+#~ msgid "Profile"
+#~ msgstr "Profilis"
+
+#~ msgid "Register"
+#~ msgstr "Registruokite"

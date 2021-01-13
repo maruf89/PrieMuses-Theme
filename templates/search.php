@@ -23,9 +23,9 @@
 <?php if ( $is_primary ): ?>
 
 	<div id="searchOverlay" class="search-overlay">
-        <div class="inner-wrap h-100 click-trap">
+        <div class="inner-wrap click-trap">
             <div class="bg-color"></div>
-            <div class="content p-5">
+            <div class="content container p-5">
                 <form class="search-form row">
                     <div class="col-sm-12 col-centered">
                         <div class="form-group search-form-bg">
@@ -43,23 +43,10 @@
                                 <div class="col-sm-4">
                                     <div class="form-check">
                                         <input type="radio"
-                                            checked
-                                            name="search_type"
-                                            class="form-check-input"
-                                            value="category"
-                                            id="inputRadioCategory" />
-                                        <label for="inputRadioCategory"
-                                            class="form-check-label">
-                                            <?= __( 'Category', 'community-directory' ) ?>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-check">
-                                        <input type="radio"
                                             name="search_type"
                                             class="form-check-input"
                                             value="entity"
+                                            checked
                                             id="inputRadioEntity" />
                                         <label for="inputRadioEntity"
                                             class="form-check-label">
@@ -80,6 +67,19 @@
                                         </label>
                                     </div>
                                 </div>
+                                <!-- <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input type="radio"
+                                            name="search_type"
+                                            class="form-check-input"
+                                            value="category"
+                                            id="inputRadioCategory" />
+                                        <label for="inputRadioCategory"
+                                            class="form-check-label">
+                                            <?= __( 'Category', 'community-directory' ) ?>
+                                        </label>
+                                    </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                         <div class="container sep-box">
                             <h2 class="search-res-title"><?= __( 'Search Results', 'priemuses' ); ?></h2>
                             <div class="search-res-wrap">
-                                <div class="search-res-container" id="searchResultsContainer">
+                                <div class="search-res-container row" id="searchResultsContainer">
                                 </div>
                                 <div class="empty-search-res">
                                     <?= __( 'There were no results that matched your search…', 'priemuses' ); ?>

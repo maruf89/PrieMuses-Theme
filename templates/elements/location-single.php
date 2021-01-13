@@ -1,4 +1,4 @@
-<?php $location = $args['location']; ?>
+<?php $location = isset( $args[ 'location' ] ) ? $args[ 'location' ] : $args[ 'instance' ]; ?>
 
 <a class="card cd-location photo" href="/<?= __( 'location', 'community-directory' ) . "/$location->slug" ?>">
     <div class="card-body text-center">
