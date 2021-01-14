@@ -146,6 +146,7 @@
   color: #fff;
   z-index: 10;
   border-radius: 50%;
+  cursor: pointer;
 }
 .search-overlay .inner-wrap {
   position: relative;
