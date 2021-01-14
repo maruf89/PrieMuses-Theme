@@ -1,6 +1,5 @@
 /// <reference types="jquery" />
 /// <reference types="src/_types/main" />
-import './index.styl';
 declare const _default: {
     opts: {
         inited: number;
@@ -15,7 +14,7 @@ declare const _default: {
         $form: any;
         $bg: any;
         $bgSlot: any;
-        $resultsContainer: any;
+        $searchResultsContainer: any;
     };
     init: (_$: typeof jQuery) => void;
     methods: {

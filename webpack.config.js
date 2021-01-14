@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // `CheckerPlugin` is optional. Use it if you want async error reporting.
 // We need this plugin to detect a `--watch` mode. It may be removed later
 // after https://github.com/webpack/webpack/issues/3460 will be resolved.
-const { CheckerPlugin } = require('awesome-typescript-loader')
+const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
   entry: {
@@ -54,11 +54,12 @@ module.exports = {
     ignored: ['node_modules/**', 'assets/**']
   },
   resolve: {
-    extensions: [".ts"],
+    extensions: [".ts", ".styl", ".jpg", ".svg", ".png", ".jpeg"],
     alias: {
-      ThirdParty: path.resolve(__dirname, 'src/ThirdParty/'),
-      '@': path.resolve(__dirname, 'src/Modules/')
-    }
+      'ThirdParty': path.resolve(__dirname, 'src/ThirdParty/'),
+      '@': path.resolve(__dirname, 'src/Modules/'),
+      'assets': path.resolve(__dirname, 'assets/'),
+    },
   },
   plugins: [
     new MiniCssExtractPlugin({

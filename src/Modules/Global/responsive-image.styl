@@ -1,0 +1,49 @@
+.responsive-image
+    width 100%
+    overflow hidden
+    vertical-align middle
+    position relative
+    transition filter 250ms ease-out
+    background $white
+
+    span
+        display block
+        max-width 100%
+        max-height 100%
+        background-size cover
+
+/*.responsive-image span*/span.img
+    display block
+    max-width 100%
+    width 100%
+    background-repeat no-repeat
+    background-position center center
+    background-size contain
+
+    &:before
+        absolute top left
+        content ''
+        background darken($white, 5%)
+        width 100%
+        height 100%
+        z-index -1
+
+divide(a,b)
+    return a / b
+
+/*///////////////////////////////////////////////////////////////////////////////////////////
+//    imageSizes - is loaded via grunt. It is read from app/config/imageSizes.json
+///////////////////////////////////////////////////////////////////////////////////////////*/
+// for imageType, breakpoints in imageSizes
+
+//     .ri-{imageType}
+//         for breakpoint, dimen in breakpoints
+//             paddingBot = unit(dimen["height"] / dimen["width"] * 100, '%')
+
+//             if breakpoint is 'xs'
+//                 .img
+//                     padding-bottom paddingBot
+//             else
+//                 .img-{breakpoint}
+//                     .img
+//                         padding-bottom paddingBot

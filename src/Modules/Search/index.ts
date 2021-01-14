@@ -1,6 +1,5 @@
 /// <reference path="../../_types/main.d.ts" />
 
-import './index.styl';
 import { getFormData } from '@/Helpers/index';
 
 let $:typeof jQuery = null;
@@ -21,7 +20,7 @@ export default {
         $form: null, // the form in the overlay
         $bg: null,
         $bgSlot: null,
-        $resultsContainer: null,
+        $searchResultsContainer: null,
     },
 	init: function(_$:typeof jQuery) {
         $ = _$;
@@ -62,6 +61,7 @@ export default {
             e.preventDefault();
             this.methods.triggerProcessing.call(this, true, false);
             
+            this.els.$searchResultsContainer.empty();
             var data:{search?:string, search_type?:string} = getFormData(this.els.$form);
             var errors = this.methods.validateSearch.call(this, data);
             var that = this;

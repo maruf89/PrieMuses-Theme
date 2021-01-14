@@ -1,4 +1,4 @@
-import '@/index';
+import '@/index.styl';
 import reCaptchaInit from 'ThirdParty/Recaptcha/Recaptcha.ts';
 import Search from '@/Search/index.ts';
 

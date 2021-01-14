@@ -1,0 +1,57 @@
+$carrot-height = 13
+[class*="carrot-"]
+    background $white
+    border 1px solid $cyan
+
+    &:before,
+    &:after
+        content ' '
+        position absolute
+        width 0
+        height 0
+        border solid transparent
+        pointer-events: none
+
+    &:before
+        border-color rgba($cyan, 0)
+
+    &:after
+        border-color: rgba($white, 0)
+
+.carrot-top
+    &:before,
+    &:after
+        bottom 100%
+        left 50%
+
+    &:before
+        border-width em($carrot-height)
+        margin-left - em($carrot-height)
+        border-bottom-color $cyan
+
+    &:after
+        border-width em($carrot-height - 1)
+        margin-left - em($carrot-height - 1)
+        border-bottom-color $white
+
+.carrot-bot
+    &:before,
+    &:after
+        top 100%
+        left 50%
+
+    &:before
+        border-width em($carrot-height)
+        margin-left - em($carrot-height)
+        border-top-color $cyan
+
+    &:after
+        border-width em($carrot-height - 1)
+        margin-left - em($carrot-height - 1)
+        border-top-color $white
+        
+.no-margin
+    margin 0 !important
+
+.no-padding
+    padding 0 !important

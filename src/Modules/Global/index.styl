@@ -1,15 +1,12 @@
-.retina
-    display: none;
-    
-@media only screen and ( -webkit-min-device-pixel-ratio: 1.3 ),
-       only screen and (    min--moz-device-pixel-ratio: 1.3 ),
-       only screen and (      -o-min-device-pixel-ratio: 2.6/2 ), /* returns 1.3, see Dev.Opera */
-       only screen and (         min-device-pixel-ratio: 1.3 ),
-       only screen and ( min-resolution: 124.8dpi ),
-       only screen and ( min-resolution: 1.3dppx )
+@import './functions.styl'
+@import './mixins.styl'
+@import './media.styl'
+@import './variables.styl'
+@import './colors.styl'
 
-   .retina
-       display: block;
 
-   .non-retina
-        display: none;
+@import './global.styl'
+@import './content.styl'
+@import './grid.styl'
+@import './header.styl'
+@import './nav.styl'
