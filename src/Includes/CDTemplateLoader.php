@@ -16,16 +16,17 @@ class CDTemplateLoader {
 			return;
         }
 
-        $this->template_hook_prefix =
-        	\Maruf89\CommunityDirectory\Includes\ClassPublic::get_template_hook_prefix();
-        $this->prefix_len = strlen( $this->template_hook_prefix );
+        list( $prefix, $len ) = \Maruf89\CommunityDirectory\Includes\ClassPublic::get_template_hook_prefix();
+        $this->template_hook_prefix = $prefix;
+        $this->prefix_len = $len;
 
         $this->add_actions_and_filters();
 	}
 
 	private function add_actions_and_filters() {
         $prefix = $this->template_hook_prefix;
-		// add_filter( "${prefix}location-list.php", [ $this, 'load_template' ], 11, 1 );
+		// add_filter( "${prefix}location/location-list.php", [ $this, 'load_template' ], 11, 1 );
+		// add_filter( "${prefix}location/location-map.php", [ $this, 'load_template' ], 11, 1 );
 		add_filter( "${prefix}elements/location-single-no-photo.php", [ $this, 'load_template' ], 11, 1 );
 		add_filter( "${prefix}elements/location-single.php", [ $this, 'load_template' ], 11, 1 );
 		// add_filter( "${prefix}offers-and-needs-no-results.php", [ $this, 'load_template' ], 11, 1 );
