@@ -33,6 +33,8 @@ class Theme {
     }
 
     public function run() {
+        // Loads translation mapping functions
+        require_once( get_template_directory() . '/src/Includes/translation_functions.php' );
 
         /**
          * Add functionality support rules for this Theme
@@ -91,7 +93,7 @@ class Theme {
         add_image_size( 'cd_thumb@2x', 1024, 410, true );
         global $content_width;
         if ( ! isset( $content_width ) ) { $content_width = 1920; }
-        register_nav_menus( array( 'main-menu' => esc_html__( 'Main Menu', 'priemuses' ) ) );
+        register_nav_menus( array( 'main-menu' => pmesc_html__( 'Main Menu' ) ) );
 
 
         /*

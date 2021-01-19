@@ -6,7 +6,7 @@
 <div <?= $is_primary ? 'id="searchBox"' : '' ?> class="search-mod py-1 h-100">
 	<form class="search-form form-inline search-form-bg">
 		<div class="form-group h-100 w-100">
-			<label class="sr-only"><?= __( 'Search PrieMuses', 'priemuses' ) ?></label>
+			<label class="sr-only"><?= pm__( 'Search PrieMuses' ) ?></label>
 			<input type="text"
 				   name="input"
 				   class="search-input form-control h-100 w-100"
@@ -31,7 +31,7 @@
                     <form class="search-form row">
                         <div class="col-sm-12 col-centered">
                             <div class="form-group search-form-bg">
-                                <label class="sr-only"><?= __( 'Search PrieMuses', 'priemuses' ) ?></label>
+                                <label class="sr-only"><?= pm__( 'Search PrieMuses' ) ?></label>
                                 <input type="text"
                                     name="search"
                                     class="search-input form-control h-100"
@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-sm-12 col-centered mb-3">
                             <div class="container sep-box">
-                                <legend><?= __( 'Search by…', 'priemuses') ?></legend>
+                                <legend><?= pm__( 'Search by...') ?></legend>
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-check">
@@ -52,7 +52,7 @@
                                                 id="inputRadioEntity" />
                                             <label for="inputRadioEntity"
                                                 class="form-check-label">
-                                                <?= __( 'Entities', 'community-directory' ) ?>
+                                                <?= _x( 'Entities', 'search', 'community-directory' ) ?>
                                             </label>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                                 id="inputRadioOfferNeed" />
                                             <label for="inputRadioOfferNeed"
                                                 class="form-check-label">
-                                                <?= __( 'Offers & Needs', 'community-directory' ) ?>
+                                                <?= _x( 'Offers & Needs', 'search', 'community-directory' ) ?>
                                             </label>
                                         </div>
                                     </div>
@@ -89,22 +89,22 @@
                         <div class="col-sm-12 col-centered mb-3">
                             <div class="container sep-box">
                                 <button type="submit" class="btn-primary w-100">
-                                    <?= __( 'Go!', 'priemuses' ) ?>
+                                    <?= pm__( 'Go!' ) ?>
                                 </button>
                             </div>
                         </div>
 
                         <div class="col-sm-12 col-centered mb-3 search-results-box">
                             <div class="container sep-box">
-                                <h2 class="search-res-title"><?= __( 'Search Results', 'priemuses' ); ?></h2>
+                                <h2 class="search-res-title"><?= pm__( 'Search Results' ); ?></h2>
                                 <div class="search-res-wrap">
                                     <div class="search-res-container row" id="searchResultsContainer">
                                     </div>
                                     <div class="empty-search-res">
-                                        <?= __( 'There were no results that matched your search…', 'priemuses' ); ?>
+                                        <?= pm__( 'There were no results that matched your search…' ); ?>
                                     </div>
                                     <div class="loading-search">
-                                        <?= __( 'Loading…', 'priemuses' ); ?>
+                                        <?= pm__( 'Loading…' ); ?>
                                     </div>
                                 </div>
                             </div>

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PrieMuses 2020.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/PrieMuses-Theme\n"
-"POT-Creation-Date: 2021-01-13 14:18+0200\n"
-"PO-Revision-Date: 2021-01-13 14:20+0200\n"
+"POT-Creation-Date: 2021-01-19 10:09+0200\n"
+"PO-Revision-Date: 2021-01-19 10:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt_LT\n"
@@ -16,51 +16,29 @@ msgstr ""
 "X-Domain: priemuses\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && (n%100<11 || n%100>19) ? 0 : n"
 "%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
-"X-Poedit-KeywordsList: __\n"
+"X-Poedit-KeywordsList: pm__;pmesc_html__;pmesc_html_e;pm_e;pm_n:1,2;"
+"pm_x:1,2c;pm_nx:4c,1,2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-1: assets\n"
 
-#: footer.php:6
-msgid "Y"
-msgstr ""
+#: search.php:5
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Paieškos Rezultatai ieškojant: %s"
 
-#: single-cd-entity.php:39
-msgid "Preferred Method of Contact"
-msgstr "Pageidaujamas Susisiekimo Būdas"
+#: search.php:17
+msgid "Nothing Found"
+msgstr "Nieko Neradome"
 
-#: single-cd-entity.php:42
-msgid "Contact Email"
-msgstr ""
+#: search.php:20
+msgid "Sorry, nothing matched your search. Please try again."
+msgstr "Deja, nieko neradom pagal jūsų paiešką. Pabandykite kažką kito."
 
-#: single-cd-entity.php:45
-msgid "Contact Telephone"
-msgstr ""
-
-#: single-cd-entity.php:48
-msgid "Website"
-msgstr ""
-
-#: single-cd-entity.php:51
-msgid "Facebook"
-msgstr ""
-
-#: single-cd-entity.php:58
-msgid "Offers"
-msgstr ""
-
-#: single-cd-entity.php:62
-msgid "Needs"
-msgstr ""
-
-#: src/Theme.php:76
-msgid "An unexpected error occured."
-msgstr ""
-
-#: src/Theme.php:225
-msgid "Community Directory Thumb Size"
-msgstr ""
+#: src/Theme.php:96
+msgid "Main Menu"
+msgstr "Pagrindinis Meniu"
 
 #: template-registration.php:13
 msgid "Registration"
@@ -74,59 +52,44 @@ msgstr ""
 "Niekas ką jūs čia išpildote nebus viešinta iki kol jūs sėkmingai sukursite "
 "paskyrą ir aktyvuosite ją."
 
-#: templates/elements/location-single-no-photo.php:3
-#: templates/elements/location-single.php:3 templates/location-single.php:3
-msgid "location"
-msgstr ""
-
-#: templates/search.php:9 templates/search.php:32
+#: templates/search.php:9 templates/search.php:34
 msgid "Search PrieMuses"
 msgstr "Paieškokite PrieMusėje"
 
-#: templates/search.php:13 templates/search.php:36
-msgid "Search"
-msgstr "Paieška"
-
-#: templates/search.php:41
-msgid "Search by…"
+#: templates/search.php:43
+msgid "Search by..."
 msgstr "Paieškokite pagal…"
 
-#: templates/search.php:53
-msgid "Entities"
-msgstr "Nariai"
-
-#: templates/search.php:66
-msgid "Offers & Needs"
-msgstr "Pasiūlymai ir Poreikiai"
-
-#: templates/search.php:79
-msgid "Category"
-msgstr "Kategorija"
-
-#: templates/search.php:90
+#: templates/search.php:92
 msgid "Go!"
 msgstr "Davai!"
 
-#: templates/search.php:97
+#: templates/search.php:99
 msgid "Search Results"
 msgstr "Paieškos Rezultatai"
 
-#: templates/search.php:102
+#: templates/search.php:104
 msgid "There were no results that matched your search…"
 msgstr "Neradome tinkamų rezultatų…"
 
-#: templates/search.php:105
+#: templates/search.php:107
 msgid "Loading…"
 msgstr "Krauname…"
 
-#: utilities/backcompat.php:41 utilities/backcompat.php:58
-#: utilities/backcompat.php:81
-#, php-format
-msgid ""
-"The selected theme requires at least WordPress version %1$s and PHP version "
-"%2$s. You are running WordPress %3$s and PHP version %4$s. Please upgrade "
-"and try again."
-msgstr ""
+#~ msgid "Preferred Method of Contact"
+#~ msgstr "Pageidaujamas Susisiekimo Būdas"
+
+#~ msgid "Search"
+#~ msgstr "Paieška"
+
+#~ msgid "Entities"
+#~ msgstr "Nariai"
+
+#~ msgid "Offers & Needs"
+#~ msgstr "Pasiūlymai ir Poreikiai"
+
+#~ msgid "Category"
+#~ msgstr "Kategorija"
 
 #~ msgid "EditProfile"
 #~ msgstr "Redaguokite Profilį"

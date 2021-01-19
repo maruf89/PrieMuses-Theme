@@ -10,8 +10,8 @@ get_header(); ?>
 <section class="row registration">
     <article id="content" class="col-xs-12 col-sm-9 col-md-6 mr-auto ml-auto" role="main">
 
-    	<h1><?= __( 'Registration', 'priemuses' )?></h1>
-    	<p class="reg-disclaimer"><?= __( 'Nothing that you post here will be made public, until you activate your profile upon successfull registration.', 'priemuses' ) ?></p>
+    	<h1><?= pm__( 'Registration' )?></h1>
+    	<p class="reg-disclaimer"><?= pm__( 'Nothing that you post here will be made public, until you activate your profile upon successfull registration.' ) ?></p>
 
         <?php the_content(); ?>
 
