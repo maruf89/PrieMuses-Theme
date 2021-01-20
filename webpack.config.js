@@ -59,6 +59,7 @@ module.exports = {
       'ThirdParty': path.resolve(__dirname, 'src/ThirdParty/'),
       '@': path.resolve(__dirname, 'src/Modules/'),
       'assets': path.resolve(__dirname, 'assets/'),
+      'templates': path.resolve(__dirname, 'templates/'),
     },
   },
   plugins: [

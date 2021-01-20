@@ -1,5 +1,5 @@
 const onSubmit = (token:string) => {
-	$('.uwp-registration-form')[0].onsubmit();
+	$('.uwp-registration-form')[0].onsubmit(new Event('submit'));
 }
 
 const registration = () => {

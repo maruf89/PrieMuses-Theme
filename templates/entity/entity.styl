@@ -1,0 +1,25 @@
+.entity-list
+    width 100%
+    display flex
+    flex-wrap wrap
+
+    /*a*/.single
+        display block
+        padding 1em
+        margin-bottom 1em
+        box-sizing border-box
+        flex 0 0 50%
+        max-width 50%
+
+        +media('md')
+            flex 0 0 33.33%
+            max-width 33.33%
+
+.entity-list,
+.search-entity
+    .text-wrap
+        padding 1em
+
+    /*h4*/.title
+        margin 0
+    

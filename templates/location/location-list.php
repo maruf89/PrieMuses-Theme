@@ -1,16 +1,16 @@
 <?php
 
-$locations = $args[ 'locations' ];
+$instances = $args[ 'instances' ];
 $single_template = $args[ 'single_template' ];
 
 ?>
 
 <ul class="row location-list">
-    <?php foreach ( $locations as $location ): ?>
-        <li class="col-xs-12 col-md-6 p-2">
+    <?php foreach ( $instances as $instance ): ?>
+        <li class="col-6 p-2">
             <?php
                 load_template( $single_template, false, array(
-                	'location' => $location,
+                	'instance' => $instance,
                 	'style_class' => 'card'
                 ) );
             ?>

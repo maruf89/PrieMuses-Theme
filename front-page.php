@@ -5,13 +5,17 @@ get_header();
 ?>
 
     <main id="content" class="container">
-        <?php if ( is_active_sidebar( 'home_page_widget' ) ) { ?>
-
-         <aside class="in-header widget-area right" role="complementary">
-            <?php dynamic_sidebar( 'home_page_widget' ); ?>
-         </aside>
-
-        <?php } ?>
+        <div class="row">
+        <?php if ( is_active_sidebar( 'home_page_widget' ) ): ?>
+            <section class="home-widget col-12 col-lg-9">
+                <?php dynamic_sidebar( 'home_page_widget' ); ?>
+            </section>
+        <?php endif; if ( is_active_sidebar( 'home_page_sidebar_widget' ) ): ?>
+            <aside class="home-aside col-12 col-lg-3">
+                <?php dynamic_sidebar( 'home_page_sidebar_widget' ); ?>
+            </aside>
+        <?php endif; ?>
+        </div>
     </main>
 
 <?php get_footer(); ?>

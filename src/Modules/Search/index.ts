@@ -82,6 +82,7 @@ export default {
                 })
                 .then(
                     this.methods.resultsLoaded.bind(this),
+                    // @ts-ignore
                     function (response:CDResponse):CDResponse {
                         console.log('Error ' + response.result, response.message);
                         return response;

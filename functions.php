@@ -52,3 +52,27 @@ if ( version_compare( $wp_version, '5.0', '<' ) || version_compare( PHP_VERSION,
      */
     $content_width = 600;
 }
+
+// Global function to easily load templates from the templates directory 
+function load_from_templates( string $file_name, array $args = [], bool $require_once = false ) {
+    $template_dir = apply_filters( 'priemuses_template_dir', '' );
+    load_template( get_stylesheet_directory() . "$template_dir/$file_name.php", $require_once, $args );
+}
+
+
+function pm_template_styles( string $style_class = '' ):array {
+    // Optional classes that can be applied to the cards
+    $styles = array(
+        // Loads Bootstrap Cards
+        'card' => [
+            'outer' => 'card',
+            'inner' => 'card-body'
+        ],
+        // Default nothing
+        '' => [
+            'outer' => '',
+            'inner' => ''
+        ]
+    );
+    return $styles[ $style_class ];
+}

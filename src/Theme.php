@@ -15,12 +15,17 @@ class Theme {
      */
     private static Theme $instance;
 
+    public static string $template_dir = '/templates';
+
     public $themeoptions = [];
     public string $version      = '1';
     public $themedata    = [];
 
     private string $assets_uri;
     private ThirdParty $third_party;
+
+    protected $community_directory_helper;
+    protected $cd_template_loader;
 
     /**
      * This function will be run when the class is initialized.
@@ -57,10 +62,11 @@ class Theme {
         add_filter( 'wp_nav_menu_args', [ $this, 'my_wp_nav_menu_args' ] );
         add_filter( 'image_size_names_choose', [ $this, 'my_editor_image_sizes' ] );
         add_filter( 'script_loader_tag', [ NonceGenerator::get_instance(), 'add_nonce_to_script' ], 10, 3 );
+        add_filter( 'priemuses_template_dir', function ( $null ):string { return static::$template_dir; }, 10, 1 );
 
-        $this->setup_template_loader();
+        
         $this->community_directory_helper = CommunityDirectoryHelper::get_instance();
-
+        $this->cd_template_loader = new CDTemplateLoader( static::$template_dir );
         $this->third_party = new ThirdParty();
     }
 
@@ -152,7 +158,16 @@ class Theme {
             'id'            => 'home_page_widget',
             'before_widget' => '<div class="home-widget">',
             'after_widget'  => '</div>',
-            'before_title'  => '<h2 class="rounded">',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>',
+        ) );
+
+        register_sidebar( array(
+            'name'          => 'Home Page Sidebar',
+            'id'            => 'home_page_sidebar_widget',
+            'before_widget' => '<aside class="home-aside">',
+            'after_widget'  => '</aside>',
+            'before_title'  => '<h2>',
             'after_title'   => '</h2>',
         ) );
     }
@@ -228,10 +243,6 @@ class Theme {
 	    ));
 	    return $sizes;
 	}
-
-    private function setup_template_loader() {
-        new CDTemplateLoader();
-    }
 }
 
 new Theme();

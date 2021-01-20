@@ -8,13 +8,16 @@ namespace Maruf89\PrieMuses\Includes;
 
 class CDTemplateLoader {
 
+    private string $_template_dir;
 	private string $template_hook_prefix;
 	private int $prefix_len;
 
-	public function __construct() {
+	public function __construct( string $template_dir = '' ) {
 		if ( !class_exists( 'Maruf89\CommunityDirectory\Includes\ClassPublic' ) ) {
 			return;
         }
+
+        $this->_template_dir = $template_dir;
 
         list( $prefix, $len ) = \Maruf89\CommunityDirectory\Includes\ClassPublic::get_template_hook_prefix();
         $this->template_hook_prefix = $prefix;
@@ -25,36 +28,39 @@ class CDTemplateLoader {
 
 	private function add_actions_and_filters() {
         $prefix = $this->template_hook_prefix;
-		// add_filter( "${prefix}location/location-list.php", [ $this, 'load_template' ], 11, 1 );
-		// add_filter( "${prefix}location/location-map.php", [ $this, 'load_template' ], 11, 1 );
-		add_filter( "${prefix}elements/location-single-no-photo.php", [ $this, 'load_template' ], 11, 1 );
-		add_filter( "${prefix}elements/location-single.php", [ $this, 'load_template' ], 11, 1 );
-		// add_filter( "${prefix}offers-and-needs-no-results.php", [ $this, 'load_template' ], 11, 1 );
-		// add_filter( "${prefix}offers-and-needs-list.php", [ $this, 'load_template' ], 11, 1 );
-		// add_filter( "${prefix}offers_needs_hashtag_list.php", [ $this, 'load_template' ], 11, 1 );
-		// add_filter( "${prefix}elements/offer-need-single.php", [ $this, 'load_template' ], 11, 1 );
-		add_filter( "${prefix}elements/entity-single.php", [ $this, 'load_template' ], 11, 1 );
-		// add_filter( "${prefix}entity-list.php", [ $this, 'load_template' ], 11, 1 );
-		// add_filter( "${prefix}entity-list.php", [ $this, 'load_template' ], 11, 1 );
+		add_filter( "${prefix}location/location-list.php", [ $this, 'load_template' ], 11, 1 );
+		// add_filter( "${prefix}location/instance-map.php", [ $this, 'load_template' ], 11, 1 );
+		add_filter( "${prefix}location/location-single.php", [ $this, 'load_template' ], 11, 1 );
+		add_filter( "${prefix}offer-need/offer-need-no-results.php", [ $this, 'load_template' ], 11, 1 );
+		add_filter( "${prefix}offer-need/offer-need-list.php", [ $this, 'load_template' ], 11, 1 );
+        add_filter( "${prefix}offer-need/offer-need-hashtag-list.php", [ $this, 'load_template' ], 11, 1 );
+		add_filter( "${prefix}offer-need/offer-need-single.php", [ $this, 'load_template' ], 11, 1 );
+		add_filter( "${prefix}entity/entity-single.php", [ $this, 'load_template' ], 11, 1 );
+		add_filter( "${prefix}entity/entity-list.php", [ $this, 'load_template' ], 11, 1 );
 		add_filter( "${prefix}search/cd-offers-needs.php", array( $this, 'load_template' ), 11, 1 );
         add_filter( "${prefix}search/cd-entity.php", array( $this, 'load_template' ), 11, 1 );
         add_filter( "${prefix}search/cd-location.php", array( $this, 'load_template' ), 11, 1 );
+
+        add_filter( "${prefix}single-post-type", [ $this, 'post_type_template' ], 10, 3 );
 	}
 
 	private array $remap = [
-		'search/cd-entity.php' => 'elements/entity-single.php',
-		'search/cd-location.php' => 'elements/location-single.php',
+		'search/cd-location.php' => 'location/location-single.php',
     ];
 
 	public function load_template( string $template ):string {
 	    // get name of current filter
-	    // Will look something like: "community_directory_template_location-list.php"
+	    // Will look something like: "community_directory_template_something-list.php"
 	    $current = current_filter();
 	    $file = substr( $current, $this->prefix_len );
 
 	    if ( isset( $this->remap[ $file ] ) )
 	    	$file = $this->remap[ $file ];
 
-	    return get_template_directory() . '/templates/' . $file;
-	}
+	    return get_template_directory() . "$this->_template_dir/$file";
+    }
+    
+    public function post_type_template( string $template, string $post_type, string $without_prefix ):string {
+        return get_stylesheet_directory() . "$this->_template_dir/$without_prefix/$template";
+    }
 }
