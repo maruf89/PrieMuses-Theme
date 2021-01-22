@@ -99,8 +99,12 @@ class Theme {
         add_image_size( 'cd_thumb@2x', 1024, 410, true );
         global $content_width;
         if ( ! isset( $content_width ) ) { $content_width = 1920; }
-        register_nav_menus( array( 'main-menu' => pmesc_html__( 'Main Menu' ) ) );
-
+        register_nav_menus(
+            array(
+                'main-menu' => pmesc_html__( 'Main Menu' ),
+                'footer-menu' => pmesc_html__( 'Footer Menu' )
+            )
+        );
 
         /*
          * Switch default core markup for search form, comment form, and comments
@@ -227,12 +231,12 @@ class Theme {
         }
     }
 
+    /**
+     * Adds a class to the menu corresponding to the user's logged in state
+     */
     public function my_wp_nav_menu_args( $args = '' ) {
-        if( is_user_logged_in() ) { 
-            $args['menu'] = 'logged-in';
-        } else { 
-            $args['menu'] = 'logged-out';
-        } 
+        if ( !empty( $args[ 'menu' ] ) ) return $args;
+        $args[ 'menu' ] =  is_user_logged_in() ? 'logged-in' : 'logged-out';
         return $args;
     }
 

@@ -27,6 +27,29 @@
 .page-header {
   padding: 1em;
 }
+.nav-footer {
+  background: #1a234e;
+  color: #fff;
+  padding: 1.25em;
+}
+.foot-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.foot-wrap ul {
+  margin: 0;
+}
+.menu-footer-container,
+.menu-footer-container .menu-item {
+  display: inline-block;
+}
+.menu-footer-container .menu-item {
+  padding: 0 0.5em;
+}
+.menu-footer-container a {
+  color: #fff;
+  text-decoration: underline;
+}
 .access {
   background: #1a234e;
   margin: 0 0 2em 0;
@@ -117,10 +140,6 @@
   width: 100%;
   background: #808080;
   margin: 0.5em 0;
-}
-.nav-footer {
-  background: #1a234e;
-  color: #fff;
 }
 .search-mod input {
   border-radius: 0;
@@ -250,6 +269,61 @@
 }
 .hentry {
   margin: 0 auto;
+}
+.faq ul {
+  list-style: inherit;
+}
+.faq ol {
+  list-style: decimal;
+}
+.faq ol,
+.faq ul {
+  padding-left: 1.5em;
+}
+.faq img {
+  display: block;
+  margin: 0.5em auto;
+}
+.faq h1 {
+  margin-bottom: 1em;
+  color: #1a234e;
+  text-decoration: underline;
+  font-size: 3em;
+}
+.faq h2 {
+  text-indent: 1em;
+  margin: 1.5em 0 0.75em;
+}
+.faq h2::after {
+  content: '>';
+  color: #1a234e;
+}
+.faq h3 {
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: margin 250ms ease-in;
+}
+.faq h3 + div {
+  overflow: hidden;
+  max-height: 0;
+  transition: all 250ms ease-in;
+  border-radius: 0.5em;
+  background: #ececec;
+}
+.faq h3:hover {
+  color: #33459a;
+  text-decoration: underline;
+}
+.faq .toggled {
+  margin-top: 1em;
+}
+.faq .toggled + div {
+  max-height: 1000px;
+  padding: 1.5em;
+  margin-bottom: 2em;
+}
+.no-js .faq h3 + div {
+  max-height: 1000px;
 }
 .registration {
   text-align: center;
