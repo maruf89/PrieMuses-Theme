@@ -3,7 +3,7 @@
 $instances = $args[ 'instances' ];
 $type = $args[ 'attrs' ][ 'type' ];
 
-$template_file = apply_filters( 'community_directory_template_offer-need/offer-need-single.php', '' );
+$template_file = apply_filters( 'community_directory_template_offers-needs/offers-needs-single.php', '' );
 
 ?>
 

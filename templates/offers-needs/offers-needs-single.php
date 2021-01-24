@@ -1,6 +1,6 @@
 <?php
     $instance = $args[ 'instance' ];
-    $type = $args[ 'type' ];
+    $type = $instance->get_offer_need_type();
 
     $type_type = __( 'Offer Type', 'community-directory' );
     if ( $type === 'need' ) $type_type = __( 'Type of Need', 'community-directory' );

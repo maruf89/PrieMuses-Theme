@@ -9337,6 +9337,15 @@ fieldset:disabled .btn {
     transform: none;
   }
 }
+body {
+  min-height: 100vh;
+  position: relative;
+}
+body.insufficient-content .nav-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
 .retina {
   display: none;
 }
@@ -9721,6 +9730,10 @@ fieldset:disabled .btn {
 .entity-list .title,
 .search-entity .title {
   margin: 0;
+}
+.on-preview {
+  max-width: 355px;
+  margin: 0 auto;
 }
 .img-container {
   margin: 0 auto;

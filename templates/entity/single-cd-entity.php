@@ -39,16 +39,25 @@ $photo = $entity->get_featured();
                 <h2><?= __( 'Preferred Method of Contact', 'community-directory' ) ?></h2>
                 <p><?= $entity->get_acf_contact_method() ?></p>
                 <?php if ( !empty( $entity->get_acf_email() ) ): ?>
-                    <p><b><?= __( 'Contact Email', 'community-directory' ) ?>:</b> <?= $entity->get_acf_email(); ?></p>
+                    <p>
+                        <b><?= __( 'Contact Email', 'community-directory' ) ?>:</b> 
+                        <a href="mailto:<?= $entity->get_acf_email(); ?>"><?= $entity->get_acf_email(); ?></a>
+                    </p>
                 <?php endif; ?>
                 <?php if ( !empty( $entity->get_acf_tel() ) ): ?>
                     <p><b><?= __( 'Contact Telephone', 'community-directory' ) ?>:</b> <?= $entity->get_acf_tel(); ?></p>
                 <?php endif; ?>
                 <?php if ( !empty( $entity->get_acf_website() ) ): ?>
-                    <p><b><?= __( 'Website', 'community-directory' ) ?>:</b> <?= $entity->get_acf_website(); ?></p>
+                    <p>
+                        <b><?= __( 'Website', 'community-directory' ) ?>:</b> 
+                        <a href="<?= $entity->get_acf_website(); ?>" target=_blank><?= $entity->get_acf_website(); ?></a>
+                    </p>
                 <?php endif; ?>
                 <?php if ( !empty( $entity->get_acf_facebook() ) ): ?>
-                    <p><b><?= __( 'Facebook', 'community-directory' ) ?>:</b> <?= $entity->get_acf_facebook(); ?></p>
+                    <p>
+                        <b><?= __( 'Facebook', 'community-directory' ) ?>:</b> 
+                        <a href="<?= $entity->get_acf_facebook(); ?>" target=_blank><?= $entity->get_acf_facebook(); ?></a>
+                </p>
                 <?php endif; ?>
             </div>
         </div>
