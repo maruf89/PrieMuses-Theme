@@ -1,0 +1,52 @@
+.p-connect
+    max-width 100%
+
+    .nav-tabs
+        padding 0 0 0 15%
+
+        +media('md')
+            display none
+
+    .inside
+        z-index -1
+        position relative
+    
+    > [class^="uwp-"]
+        display none
+        @extend .col-12
+        @extend .col-lg-6
+        margin 0 auto
+        
+
+        +media('md')
+            display block
+            padding 1em 2em
+
+            &:first-of-type
+                border-right 1px solid $light-grey
+
+        > h2
+            text-align center
+            margin 1em 0
+
+            +media('md')
+                margin 0 0 0.75em 1em
+
+        > div
+            @extend .container
+
+    .tab-select:checked + [class^="uwp-"]
+        display block
+
+    // Overrides //
+
+    /*a*/.uwp-register-link,
+    /*a*/.uwp-login-link
+        display none !important
+
+    .uwp-footer-link.float-right
+        float none !important
+
+        a
+            margin 0 !important
+        

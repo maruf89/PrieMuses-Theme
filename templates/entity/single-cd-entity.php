@@ -23,7 +23,7 @@ $photo = $entity->get_featured();
             <?php endif; ?>
             <div class="col-xs-12 col-sm-12 text-center mb-3">
                 <div class="row">
-                    <div class="col-sm-6 mr-auto ml-auto">
+                    <div class="col-sm-6 m-auto">
                         <h1><?= $entity->post_title ?></h1>
                         <div class="divider"></div>
                         <p>
@@ -35,7 +35,7 @@ $photo = $entity->get_featured();
         </div>
 
         <div class="row mb-5 text-center">
-            <div class="col-xs-12 col-sm-6 mr-auto ml-auto">
+            <div class="col-xs-12 col-sm-6 m-auto">
                 <h2><?= __( 'Preferred Method of Contact', 'community-directory' ) ?></h2>
                 <p><?= $entity->get_acf_contact_method() ?></p>
                 <?php if ( !empty( $entity->get_acf_email() ) ): ?>

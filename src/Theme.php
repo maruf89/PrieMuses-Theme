@@ -130,7 +130,6 @@ class Theme {
         
         wp_enqueue_style( 'priemuses-base-style', get_stylesheet_uri() , [],wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis") );
         wp_enqueue_style( 'priemuses-style', "$this->assets_uri/dist/site.css" , [], wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"));
-        wp_enqueue_style( 'bootstrap', "$this->assets_uri/css/bootstrap" . $suffix . '.css' , wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
 
         wp_enqueue_style( 'dashicons' );
     }

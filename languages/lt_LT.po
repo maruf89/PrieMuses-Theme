@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PrieMuses 2020.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/PrieMuses-Theme\n"
-"POT-Creation-Date: 2021-01-19 10:09+0200\n"
-"PO-Revision-Date: 2021-01-19 10:25+0200\n"
+"POT-Creation-Date: 2021-01-24 11:19+0200\n"
+"PO-Revision-Date: 2021-01-24 11:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt_LT\n"
@@ -36,15 +36,31 @@ msgstr "Nieko Neradome"
 msgid "Sorry, nothing matched your search. Please try again."
 msgstr "Deja, nieko neradom pagal jūsų paiešką. Pabandykite kažką kito."
 
-#: src/Theme.php:96
+#: src/Theme.php:104
 msgid "Main Menu"
 msgstr "Pagrindinis Meniu"
 
-#: template-registration.php:13
-msgid "Registration"
-msgstr "Registracija"
+#: src/Theme.php:105
+msgid "Footer Menu"
+msgstr "Poraštės meniu"
 
-#: template-registration.php:14
+#: template-connect.php:9
+msgid "Don't have an account?"
+msgstr "Neturite sąskaitos?"
+
+#: template-connect.php:10
+msgid "Register"
+msgstr "Registruokite"
+
+#: template-connect.php:11
+msgid "Already have an account?"
+msgstr "Jau turite sąskaitą?"
+
+#: template-connect.php:12
+msgid "Log in"
+msgstr "Prisiloginkite"
+
+#: template-connect.php:27
 msgid ""
 "Nothing that you post here will be made public, until you activate your "
 "profile upon successfull registration."
@@ -76,6 +92,9 @@ msgstr "Neradome tinkamų rezultatų…"
 msgid "Loading…"
 msgstr "Krauname…"
 
+#~ msgid "Registration"
+#~ msgstr "Registracija"
+
 #~ msgid "Preferred Method of Contact"
 #~ msgstr "Pageidaujamas Susisiekimo Būdas"
 
@@ -96,6 +115,3 @@ msgstr "Krauname…"
 
 #~ msgid "Profile"
 #~ msgstr "Profilis"
-
-#~ msgid "Register"
-#~ msgstr "Registruokite"
