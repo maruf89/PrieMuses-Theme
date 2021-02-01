@@ -15,8 +15,12 @@
         <div class="row">
             <section id="masthead" class="col-xs-12 col-md-8" role="banner">
                 <div class="hgroup">
-                    <h1 class="site-title"><a href="<?php esc_url( home_url( '/' ) ); ?>/"><?php bloginfo('name'); ?></a></h1>
-                    <h2 class="site-description"><?php bloginfo('description'); ?></h2>
+                    <?php ob_start() ?>
+                        <a href="<?php esc_url( home_url( '/' ) ); ?>/"><?php bloginfo('name'); ?></a>
+                    <?php $title = ob_get_clean(); ?>
+                    <h1 class="site-title">
+                        <?= sprintf( pm__( 'Directory of Everyone %s' ), $title ) ?>
+                    </h1>
                 </div>
             </section>
         </div>

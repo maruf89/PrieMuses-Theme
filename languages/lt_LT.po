@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PrieMuses 2020.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/PrieMuses-Theme\n"
-"POT-Creation-Date: 2021-01-24 15:31+0200\n"
-"PO-Revision-Date: 2021-01-24 15:43+0200\n"
+"POT-Creation-Date: 2021-02-01 17:50+0200\n"
+"PO-Revision-Date: 2021-02-01 17:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt_LT\n"
@@ -22,6 +22,11 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-1: assets\n"
+
+#: header.php:22
+#, php-format
+msgid "Directory of Everyone %s"
+msgstr "Visų Veiklų %s Katalogas"
 
 #: search.php:5
 #, php-format
