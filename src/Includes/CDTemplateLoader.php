@@ -35,6 +35,7 @@ class CDTemplateLoader {
 		add_filter( "${prefix}offers-needs/offers-needs-list.php", [ $this, 'load_template' ], 11, 1 );
         add_filter( "${prefix}offers-needs/offers-needs-hashtag-list.php", [ $this, 'load_template' ], 11, 1 );
 		add_filter( "${prefix}offers-needs/offers-needs-single.php", [ $this, 'load_template' ], 11, 1 );
+		add_filter( "${prefix}offers-needs/offers-needs-minified-single.php", [ $this, 'load_template' ], 11, 1 );
 		add_filter( "${prefix}entity/entity-single.php", [ $this, 'load_template' ], 11, 1 );
 		add_filter( "${prefix}entity/entity-list.php", [ $this, 'load_template' ], 11, 1 );
 		add_filter( "${prefix}search/cd-offers-needs.php", array( $this, 'load_template' ), 11, 1 );

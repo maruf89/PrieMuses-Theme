@@ -1,4 +1,4 @@
-            </div>
+            </div><?php // .container-fluid.main-content ?>
             <footer class="container-fluid nav-footer" id="footer">
                 <div class="container">
                     <div class="row" id="copyright">

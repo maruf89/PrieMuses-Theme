@@ -1,0 +1,64 @@
+.tax
+    .depth-0
+        font-weight 600
+        &:before
+            content '-'
+
+    .depth-1
+        font-weight 400
+        font-size .9em
+        &:before
+            content '•'
+
+    .depth-2
+        font-weight 300
+        font-size .9em
+        &:before
+            content '+'
+
+    label
+        a
+            text-decoration none
+            color $blue
+        
+        &:hover
+            text-decoration underline
+            color $link-blue
+
+    .parent
+        padding-left 1em
+        display block
+
+    .toggle
+        width 0
+        height 1.25em
+
+    .toggle + .parent .term-block
+        max-height 0
+        overflow hidden
+        transition max-height 250ms ease-in-out
+
+    .expanded
+        max-height 1.5em
+
+        &.has-children
+            max-height 10em
+
+    .term-block:hover
+        & > .parent > .term-block
+            transition-delay 1000ms
+            @extends .expanded
+            
+
+    .toggle:checked + .parent > .term-block,
+    .active > .parent > .term-block,
+    .parent-active > .parent > .term-block
+        @extends .expanded
+
+    .active > label
+        font-weight bolder
+        color $link-blue
+        text-decoration underline
+
+    .term-block
+        padding-right .5em

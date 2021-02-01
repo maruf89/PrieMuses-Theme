@@ -6,6 +6,7 @@
 
 $instances = $args[ 'instances' ];
 $single_template = $args[ 'single_template' ];
+$single_template_args = $args[ 'single_template_args' ] ?? [];
 
 ?>
 
@@ -14,10 +15,13 @@ $single_template = $args[ 'single_template' ];
         <?php load_template(
                     $single_template,
                     false,
-                    array(
-                        'instance' => $instance,
-                        'index' => $index,
-                        'style_class' => 'card'
+                    array_merge(
+                        array(
+                            'instance' => $instance,
+                            'index' => $index,
+                            'style_class' => 'card',
+                        ),
+                        $single_template_args,
                     )
                 );
         ?>

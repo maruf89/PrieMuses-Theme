@@ -1,3 +1,13 @@
 .main-content
-    margin-bottom 2em
-    padding 0
+    > main
+        padding 2em 0
+
+// Calculate the min height needed to stick the footer flush against the bottom
+$main-height-calc = s('100vh - %s - %s - %s', $header-height, $nav-height, $footer-height)
+main
+    min-height calc($main-height-calc)
+
+#wpadminbar ~ .main-content
+    main
+        min-height calc(s('%s - %s', $main-height-calc, $wp-admin-bar-height))
+

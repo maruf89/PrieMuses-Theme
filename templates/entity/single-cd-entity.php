@@ -64,12 +64,22 @@ $photo = $entity->get_featured();
         
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <h2 class="text-center mb-4"><?= __( 'Offers', 'community-directory' ) ?></h2>
-                <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' type='offer' ]" ); ?>
+                <?php ob_start(); ?>
+                    <h2 class="text-center mb-4"><?= __( 'Offers', 'community-directory' ) ?></h2>
+                <?php $title = ob_get_clean(); ?>
+                <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' title='$title' type='offer' ]" ); ?>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <h2 class="text-center mb-4"><?= __( 'Needs', 'community-directory' ) ?></h2>
-                <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' type='need' ]" ); ?>
+                <?php ob_start(); ?>
+                    <h2 class="text-center mb-4"><?= __( 'Needs', 'community-directory' ) ?></h2>
+                <?php $title = ob_get_clean(); ?>
+                <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' title='$title' type='need' ]" ); ?>
+            </div>
+        </div>
+
+        <div class="row mb-5 map-row">
+            <div class="col-12">
+                <?php do_shortcode( "[community_directory_list_entities type='map' entity_id='$post->ID' ]" ); ?>
             </div>
         </div>
     </main>

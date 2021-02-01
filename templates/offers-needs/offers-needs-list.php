@@ -1,20 +1,21 @@
 <?php
 
 $instances = $args[ 'instances' ];
+$title = $args[ 'title' ] ?? '';
 $type = $args[ 'attrs' ][ 'type' ];
-
-$template_file = apply_filters( 'community_directory_template_offers-needs/offers-needs-single.php', '' );
+$single_template = $args[ 'single_template' ];
+$single_template_args = $args[ 'single_template_args' ];
 
 ?>
 
 <section class="cd-offers-needs">
+    <?= $title ?>
     <ul class="cd-<?= $type ?>-list">
         <?php foreach ( $instances as $index => $instance ) {
-            load_template( $template_file, false, array(
+            load_template( $single_template, false, array_merge( array(
                 'instance' => $instance,
                 'index' => $index,
-                'type' => $type,
-            ) );
+            ), $single_template_args, $args[ 'attrs' ] ) );
         } ?>
     </ul>
 </section>

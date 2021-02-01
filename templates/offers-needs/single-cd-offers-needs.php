@@ -4,14 +4,14 @@ use Maruf89\CommunityDirectory\Includes\instances\OfferNeed;
 
 global $post;
 $instance = OfferNeed::get_instance( null, null, $post );
-$template_file = apply_filters( 'community_directory_template_offers-needs/offers-needs-single.php', '' );
+$single_template = $args[ 'single_template' ];
 
 get_header();
 
 ?>
 
     <main id="content" class="container on-preview">
-        <?php load_template( $template_file, false, array(
+        <?php load_template( $single_template, false, array(
                 'instance' => $instance,
             ) );
         ?>

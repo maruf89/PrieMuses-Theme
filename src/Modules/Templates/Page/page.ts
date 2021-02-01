@@ -1,7 +1,6 @@
 export default function init() {
     initConnect();
     initFAQ();
-    initBody();
 }
 
 function initFAQ():boolean {
@@ -35,10 +34,4 @@ function initConnect():boolean {
     });
 
     return true;
-}
-
-function initBody() {
-    // If short screen, add class to make footer stick to bottom
-    if (jQuery(document).height() < window.outerHeight)
-        jQuery(document.body).addClass('insufficient-content');
 }

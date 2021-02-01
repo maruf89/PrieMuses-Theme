@@ -59,7 +59,6 @@ function load_from_templates( string $file_name, array $args = [], bool $require
     load_template( get_stylesheet_directory() . "$template_dir/$file_name.php", $require_once, $args );
 }
 
-
 function pm_template_styles( string $style_class = '' ):array {
     // Optional classes that can be applied to the cards
     $styles = array(

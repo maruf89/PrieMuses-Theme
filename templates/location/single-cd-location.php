@@ -25,11 +25,11 @@ $location_name = $post->post_name;
         <div class="row mb-5">
             <div class="col-xs-12 col-sm-6">
                 <h4 class="text-center mb-4"><?= sprintf( __( 'Offers in %s', 'community-directory' ), $post->post_title ) ?></h4>
-                <?php do_shortcode( "[community_directory_list_offers_needs_hashtag_list location_id='$post->ID' type='offer' ]" ); ?>
+                <?php do_shortcode( "[community_directory_list_offers_needs minified=1 location_id='$post->ID' type='offer' ]" ); ?>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <h4 class="text-center mb-4"><?= sprintf( __( 'Needs in %s', 'community-directory' ), $post->post_title ) ?></h4>
-                <?php do_shortcode( "[community_directory_list_offers_needs_hashtag_list location_id='$post->ID' type='need' ]" ); ?>
+                <?php do_shortcode( "[community_directory_list_offers_needs minified=1 location_id='$post->ID' type='need' ]" ); ?>
             </div>
         </div>
 

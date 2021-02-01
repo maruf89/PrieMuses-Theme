@@ -13,7 +13,7 @@ $login = pm__( 'Log in', 'priemuses' );
 
 get_header(); ?>
 
-<section class="row p-connect" id="pageConnect">
+<main class="row p-connect" id="pageConnect">
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <label class="nav-link active" for="registerTab"><?= $register ?></label>
@@ -36,6 +36,6 @@ get_header(); ?>
                     ]");
     ?>
 
-</section>
+</main>
 
 <?php get_footer(); ?>

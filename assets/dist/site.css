@@ -680,6 +680,7 @@ progress {
   width: 91.6666666667%;
 }
 .col-12,
+.search-overlay .search-result,
 .p-connect > [class^="uwp-"] {
   flex: 0 0 auto;
   width: 100%;
@@ -9337,15 +9338,6 @@ fieldset:disabled .btn {
     transform: none;
   }
 }
-body {
-  min-height: 100vh;
-  position: relative;
-}
-body.insufficient-content .nav-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
 .retina {
   display: none;
 }
@@ -9365,9 +9357,20 @@ body.insufficient-content .nav-footer {
     display: inline !important;
   }
 }
-.main-content {
-  margin-bottom: 2em;
-  padding: 0;
+.main-content > main {
+  padding: 2em 0;
+}
+main {
+  min-height: -webkit-calc(100vh - 124px - 49px - 63px);
+  min-height: -moz-calc(100vh - 124px - 49px - 63px);
+  min-height: -ms-calc(100vh - 124px - 49px - 63px);
+  min-height: calc(100vh - 124px - 49px - 63px);
+}
+#wpadminbar ~ .main-content main {
+  min-height: -webkit-calc(100vh - 124px - 49px - 63px - 32px);
+  min-height: -moz-calc(100vh - 124px - 49px - 63px - 32px);
+  min-height: -ms-calc(100vh - 124px - 49px - 63px - 32px);
+  min-height: calc(100vh - 124px - 49px - 63px - 32px);
 }
 .col-centered {
   float: none;
@@ -9401,7 +9404,6 @@ body.insufficient-content .nav-footer {
 }
 .access {
   background: #1a234e;
-  margin: 0 0 2em 0;
   position: relative;
   z-index: 500;
   font-size: 1.138em;
@@ -9581,23 +9583,29 @@ body.insufficient-content .nav-footer {
   display: block;
   overflow: hidden;
   border-radius: 0.25em;
+  padding: 1em;
+  margin-bottom: 1em;
+/*a*/
 /*h5*/
+}
+.search-result .main-link {
+  text-decoration: none;
 }
 .search-result .title {
   margin-bottom: 0.25em;
+  text-decoration: underline;
 }
 .search-result p {
-  margin: 0;
+  color: #404040;
+}
+.search-result .d-icon {
+  font-size: smaller;
 }
 .profile-div {
   padding-bottom: 40%;
   background-size: cover !important;
   width: 50%;
   margin: 0 auto 1.5em;
-}
-.offers-needs-hashtags {
-  text-align: center;
-  margin-bottom: 3em;
 }
 .cd-on-single .title {
   margin-bottom: 0.75em;
@@ -9615,6 +9623,72 @@ body.insufficient-content .nav-footer {
 }
 .location-list .text {
   margin-top: 1em;
+}
+.tax .depth-0 {
+  font-weight: 600;
+}
+.tax .depth-0:before {
+  content: '-';
+}
+.tax .depth-1 {
+  font-weight: 400;
+  font-size: 0.9em;
+}
+.tax .depth-1:before {
+  content: '\2022';
+}
+.tax .depth-2 {
+  font-weight: 300;
+  font-size: 0.9em;
+}
+.tax .depth-2:before {
+  content: '+';
+}
+.tax label a {
+  text-decoration: none;
+  color: $blue;
+}
+.tax label:hover {
+  text-decoration: underline;
+  color: #33459a;
+}
+.tax .parent {
+  padding-left: 1em;
+  display: block;
+}
+.tax .toggle {
+  width: 0;
+  height: 1.25em;
+}
+.tax .toggle + .parent .term-block {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 250ms ease-in-out;
+}
+.tax .expanded,
+.tax .term-block:hover > .parent > .term-block,
+.tax .toggle:checked + .parent > .term-block,
+.tax .active > .parent > .term-block,
+.tax .parent-active > .parent > .term-block {
+  max-height: 1.5em;
+}
+.tax .expanded.has-children,
+.tax .term-block:hover > .parent > .term-block.has-children,
+.tax .toggle:checked + .parent > .term-block.has-children,
+.tax .active > .parent > .term-block.has-children,
+.tax .parent-active > .parent > .term-block.has-children {
+  max-height: 10em;
+}
+.tax .term-block:hover > .parent > .term-block {
+  transition-delay: 1000ms;
+}
+.tax .active > label {
+  font-weight: bolder;
+  color: #33459a;
+  text-decoration: underline;
+}
+.tax .term-block {
+  padding-right: 0.5em;
 }
 .hentry {
   margin: 0 auto;
@@ -9731,9 +9805,29 @@ body.insufficient-content .nav-footer {
 .search-entity .title {
   margin: 0;
 }
+ul.cd-offer-list,
+ul.cd-need-list {
+  padding: 0;
+}
+.cd-on-single {
+  margin-bottom: 1em;
+}
 .on-preview {
   max-width: 355px;
   margin: 0 auto;
+}
+.offers-needs-hashtags .single {
+  margin-bottom: 0.5em;
+}
+.offers-needs-hashtags a {
+  text-decoration: none;
+}
+.offers-needs-hashtags a.title {
+  text-decoration: underline;
+  font-size: larger;
+}
+.offers-needs-hashtags a:hover {
+  font-weight: bolder;
 }
 .img-container {
   margin: 0 auto;
@@ -9750,6 +9844,9 @@ body.insufficient-content .nav-footer {
   }
 }
 @media only screen and (min-width: 992px) {
+  .search-overlay .search-result {
+    width: 33.33%;
+  }
   ._appended .container-wrap {
     max-width: 650px;
     transition: max-width 500ms ease-out;
