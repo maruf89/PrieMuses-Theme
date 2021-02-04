@@ -1,0 +1,106 @@
+.search-overlay
+    display none
+    z-index -1
+
+    .inner-wrap
+        position relative
+        min-height 100%
+        text-align center
+        padding 2em 1em 1em
+    
+    .icon-close
+        position absolute
+        right 1em
+        top 1em
+        height 1.5em
+        width 1.5em
+        padding .25em
+        background rgba($black, 0.5)
+        color $white
+        z-index 10
+        border-radius 50%
+        cursor pointer
+
+    .bg-color
+        background rgba(140, 153, 161, .95)
+        width 100%
+        height 100%
+        position absolute
+        top 0
+        left 0
+        z-index -1
+        
+    .container-wrap
+        border-radius 0.25em
+        background rgba(255,255,255,0.2)
+        display inline-block
+        width 100%
+
+        +media('sm')
+            margin 5em 3em 3em
+
+        +media('md')
+            max-width em(850);
+            transition max-width 500ms ease-out
+
+
+    .content
+        display flex
+        text-align left
+
+    &._appended
+        display block
+        overflow scroll
+        width 100%
+        height 100%
+        z-index 9876
+        position fixed
+        top 0
+        left 0
+
+        #wpadminbar ~ &
+            top 32px
+
+    .error-row
+        color $error-color
+        margin-top 1em
+        display none
+
+        span
+            display block
+
+    &._has-errors
+        .error-row
+            display block;
+
+
+    /**** Advanced Options ******/
+    
+    .search-options
+        width 100%
+        background $white
+        border-radius 0.25em
+        max-width em(200)
+        height auto
+        padding 0.5em
+        margin-right 1em
+
+    .search-result
+        @extends .col-12
+        max-height em(425);
+        overflow-y auto
+        
+        +media('md')
+            width 50%
+
+    .search-form
+        max-width em(650)
+        
+        .form-groupfirst-of-type
+            width 100%
+            display flex
+
+        .sep-box
+            background #FFF
+            border-radius 0.25em
+            padding 1em

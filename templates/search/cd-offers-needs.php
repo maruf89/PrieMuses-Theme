@@ -40,7 +40,7 @@ if ( $photo ) {
                     <?= $location->display_name ?>
                 </a>
             <?php endif; if( !$hide_product_service ): ?>
-                <?= $instance->get_product_service_type()->get_link( 'product-service d-icon' ) ?>
+                <?= $instance->get_product_service_link( 'product-service d-icon' ) ?>
             <?php endif; ?>
         </div>
     </div>

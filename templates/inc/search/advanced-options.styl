@@ -1,0 +1,42 @@
+.aso
+    legend
+        $font-title(20, null, 24)
+        margin-bottom .25em
+    
+    .line
+        display block
+        margin-bottom 0.2em
+        position relative
+
+    input
+        display none
+
+    label
+        font-size 1em
+        cursor pointer
+        transition all 250ms
+        &::after
+            content ' '
+            position absolute
+            bottom 2px
+            left 0
+            height 2px
+            width 0
+            background $link-color
+            transition all 500ms
+
+        &:hover
+            color shade($link-color, 30%)
+
+    input:checked + label
+        color $link-color
+        font-weight bold
+
+        &:after
+            width 90%
+
+    .children
+        font-size 0.9em
+
+        > .line
+            margin-left 0.5em

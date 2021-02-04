@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PrieMuses 2020.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/PrieMuses-Theme\n"
-"POT-Creation-Date: 2021-02-01 17:50+0200\n"
-"PO-Revision-Date: 2021-02-01 17:51+0200\n"
+"POT-Creation-Date: 2021-02-04 17:10+0200\n"
+"PO-Revision-Date: 2021-02-04 17:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt_LT\n"
@@ -73,27 +73,28 @@ msgstr "Jau turite sąskaitą?"
 msgid "Log in"
 msgstr "Prisiloginkite"
 
-#: templates/search.php:9 templates/search.php:34
+#: templates/inc/search/search-bar.php:6
+#: templates/inc/search/search-overlay.php:17
 msgid "Search PrieMuses"
 msgstr "Paieškokite PrieMusėje"
 
-#: templates/search.php:43
+#: templates/inc/search/search-overlay.php:26
 msgid "Search by..."
 msgstr "Paieškokite pagal…"
 
-#: templates/search.php:92
+#: templates/inc/search/search-overlay.php:79
 msgid "Go!"
 msgstr "Davai!"
 
-#: templates/search.php:99
+#: templates/inc/search/search-overlay.php:86
 msgid "Search Results"
 msgstr "Paieškos Rezultatai"
 
-#: templates/search.php:104
+#: templates/inc/search/search-overlay.php:91
 msgid "There were no results that matched your search…"
 msgstr "Neradome tinkamų rezultatų…"
 
-#: templates/search.php:107
+#: templates/inc/search/search-overlay.php:94
 msgid "Loading…"
 msgstr "Krauname…"
 

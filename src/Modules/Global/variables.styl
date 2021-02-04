@@ -1,6 +1,8 @@
 /************************/
 /*****    !FONTS    *****/
 /************************/
+$root-font-size = 16
+
 $font-light-val         = 'Open Sans', 'HelveticaNeue-Light', 'Helvetica Neue Light', Helvetica, sans-serif
 $font-italic-val        = 'Open Sans', $font-light-val
 $font-regular-val       = 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif
@@ -17,10 +19,10 @@ $font-italic(size = null, base = null, lineheight = null)
     font-mixin($font-italic-val, 400, size, base, lineheight, italic)
 
 $font-bold(size = null, base = null, lineheight = null)
-    font-mixin($font-bold-val, 700, size, base, lineheight)
+    font-mixin($font-bold-val, 500, size, base, lineheight)
 
 $font-title(size = null, base = null, lineheight = null)
-    font-mixin($font-title-val, 700, size, base, lineheight)
+    font-mixin($font-title-val, 500, size, base, lineheight)
 
 
 $wp-admin-bar-height = 32px

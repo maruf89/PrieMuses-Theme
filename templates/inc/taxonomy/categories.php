@@ -12,22 +12,7 @@ get_header(); ?>
 <main class="container full-body">
     <article class="tax tax-ps row">
         <div class="col-4">
-            <?php
-            wp_list_categories([
-                'echo' => true,
-                'depth' => 3,
-                'show_count' => true,
-                'taxonomy' => TaxonomyProductService::$taxonomy,
-                'title_li' => __( 'Product Service Types', 'community-directory' )
-            ]);
-            wp_list_categories([
-                'echo' => true,
-                'depth' => 3,
-                'show_count' => true,
-                'taxonomy' => TaxonomyLocation::$taxonomy,
-                'title_li' => __( 'Places', 'community-directory' )
-            ]);
-            ?>
+            <?php load_from_templates( 'inc/taxonomy/categories_lists' ); ?>
         </div>
         <div class="col-8">
             <div class="row">

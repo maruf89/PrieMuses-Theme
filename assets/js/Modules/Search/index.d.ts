@@ -7,6 +7,7 @@ declare const _default: {
         processing: string;
         processed: string;
         noResults: string;
+        hasErrors: string;
     };
     els: {
         $search: any;
@@ -15,15 +16,20 @@ declare const _default: {
         $bg: any;
         $bgSlot: any;
         $searchResultsContainer: any;
+        $searchBy: any;
+        $searchErrors: any;
+        $advancedOptions: any;
     };
     init: (_$: typeof jQuery) => void;
     methods: {
-        loadBackdrop: () => void;
-        onClose: () => void;
-        onSubmit: (e: any) => void;
-        triggerProcessing: (loading: boolean, loaded: boolean) => void;
-        validateSearch: (data: any) => any[];
-        resultsLoaded: (res: string) => void;
+        initSearchBy(): void;
+        loadBackdrop(): void;
+        onClose(): void;
+        toggleChecked(e: any): void;
+        onSubmit(e: any): void;
+        triggerProcessing(loading: boolean, loaded: boolean): void;
+        validateSearch(data: any): any[];
+        resultsLoaded(res: string): void;
     };
 };
 export default _default;

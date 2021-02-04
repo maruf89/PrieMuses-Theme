@@ -38,7 +38,8 @@
                         </div>
 
                         <div class="search-wrapper col-md-4">
-                            <?php get_template_part( 'templates/search', null, [ 'primary' => true ] ); ?>
+                            <?php load_from_templates( 'inc/search/search-bar', [ 'primary' => true ], false ); ?>
+                            <?php load_from_templates( 'inc/search/search-overlay', [], true ); ?>
                         </div>
                     </div>
                 </nav>

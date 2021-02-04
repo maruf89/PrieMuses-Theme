@@ -12,6 +12,7 @@ export default {
         processing: '_processing', // loading class
         processed: '_processed', // Search loaded
         noResults: '_no-results',
+        hasErrors: '_has-errors',
     },
     // elements
     els: {
@@ -21,6 +22,9 @@ export default {
         $bg: null,
         $bgSlot: null,
         $searchResultsContainer: null,
+        $searchBy: null, // the div containing the primary filters to search by
+        $searchErrors: null, // container for display errors
+        $advancedOptions: null, // El for the category filters
     },
 	init: function(_$:typeof jQuery) {
         $ = _$;
@@ -36,6 +40,9 @@ export default {
         this.els.$form = this.els.$bg.find('form');
         this.els.$innerInput = this.els.$bg.find('.search-input');
         this.els.$searchResultsContainer = $('#searchResultsContainer');
+        this.els.$searchBy = $('#searchBy');
+        this.els.$advancedOptions = $('#searchOptions');
+        this.els.$searchErrors = $('#searchErrors');
 
         $bg.appendTo(document.body);
         this.els.$input.on('focus', this.methods.loadBackdrop.bind(this));
@@ -45,24 +52,47 @@ export default {
             }.bind(this))
             .on('submit', 'form', this.methods.onSubmit.bind(this));
 
-		
+        this.els.$advancedOptions.on('click', 'input:checked', this.methods.toggleChecked.bind(this));
+        this.methods.initSearchBy.call(this);
 	},
 	methods: {
-		loadBackdrop: function () {
+        initSearchBy() {
+            const taxonomies = cdData.taxonomyType;
+            const $optContainer = this.els.$advancedOptions;
+            const updateShowHideOptionSections = () => {
+                const curTypes = this.els.$searchBy.find('input:checked').data().searchTypes;
+                Object.keys(taxonomies).forEach(key => {
+                    $optContainer.find('.' + taxonomies[key])[curTypes.includes(key) ? 'show' : 'hide']();
+                });
+            }
+            
+            this.els.$searchBy.on('click', 'input', updateShowHideOptionSections);
+            updateShowHideOptionSections();
+        },
+		loadBackdrop() {
             this.els.$bg.addClass(this.opts.appendClass);
             setTimeout(function () {
                 this.els.$innerInput[0].focus();
             }.bind(this), 0);
         },
-        onClose: function() {
+        onClose() {
             this.els.$bg.removeClass(this.opts.appendClass);
         },
-        onSubmit: function(e) {
+        toggleChecked(e) {
+            const data = e.target.dataset;
+            const is = +e.target.checked;
+            if (+data.wasChecked === is) {
+                e.target.checked = false;
+                data.wasChecked = 0;
+            } else data.wasChecked = 1;
+        },
+        onSubmit(e) {
+            this.els.$bg.removeClass(this.opts.hasErrors);
             e.preventDefault();
             this.methods.triggerProcessing.call(this, true, false);
             
             this.els.$searchResultsContainer.empty();
-            var data:{search?:string, search_type?:string} = getFormData(this.els.$form);
+            var data:{search?:string, search_type?:string, taxonomy?:{}} = getFormData(this.els.$form);
             var errors = this.methods.validateSearch.call(this, data);
             var that = this;
 
@@ -72,7 +102,7 @@ export default {
                     type: 'POST',
                     url: pm.restBase + 'search/all',
                     data: {
-                        search: data.search,
+                        ...data,
                         type: data.search_type,
                     },
                     beforeSend: function ( xhr ) {
@@ -91,11 +121,12 @@ export default {
                     that.methods.triggerProcessing.call(that, false, true);
                 });
             } else {
-                // Invalid
-
+                this.els.$searchErrors.append(errors.map(err => `<span>${err}</span>`).join('<br />'))
+                this.els.$bg.addClass(this.opts.hasErrors);
+                this.methods.triggerProcessing.call(this, false, false);
             }
         },
-        triggerProcessing: function( loading:boolean, loaded:boolean) {
+        triggerProcessing( loading:boolean, loaded:boolean) {
             this.els.$bg.toggleClass(
                 this.opts.processing,
                 loading
@@ -106,10 +137,13 @@ export default {
 
             if ( loading ) this.els.$bg.removeClass(this.opts.noResults);
         },
-        validateSearch: function (data) {
+        validateSearch(data) {
             var errors = [];
+
+            const keys = Object.keys(data);
+            const hasTax = keys.some(key => /^taxonomy/.test(key));
             
-            if (data.search == '') {
+            if (!hasTax && data.search == '') {
                 errors.push("Search must not be empty");
             }
             
@@ -119,7 +153,7 @@ export default {
 
             return errors;
         },
-        resultsLoaded: function (res:string) {
+        resultsLoaded(res:string) {
             const response:CDResponse = JSON.parse(res);
             if ( response.result !== 200 ) throw response;
 
