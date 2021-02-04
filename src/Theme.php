@@ -139,7 +139,7 @@ class Theme {
      */
     public function addFrontendScripts() {
         wp_enqueue_script( 'jquery' );
-        wp_enqueue_script( 'priemuses-js', "$this->assets_uri/dist/site.bundle.js", [], 12312312312);// wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
+        wp_enqueue_script( 'priemuses-js', "$this->assets_uri/dist/site.bundle.js", [], wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
         wp_localize_script( 'priemuses-js', 'pm',
             array_merge(
                 array(
