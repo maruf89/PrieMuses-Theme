@@ -10,7 +10,9 @@ class ClassMeta {
         $this->cd_loaded = $cd_loaded;
         $this->post_types = apply_filters( 'community_directory_get_post_types', [] );
         $this->taxonomy_types = apply_filters( 'community_directory_get_taxonomy_types', [] );
-        foreach ( $this->_get_post_types_to_save_metadata() as $pt )
+
+        $this->metaboxable_post_types = $this->_get_post_types_to_save_metadata();
+        foreach ( $this->metaboxable_post_types as $pt )
             add_action( "save_post_$pt", [ $this, 'save_metadata_metaboxes' ] );
     }
     
@@ -42,9 +44,8 @@ class ClassMeta {
                 if ( count( $desc ) ) $desc = $meta[ $acf::$offers_needs_description ][ 0 ];
                 break;
             case \Maruf89\CommunityDirectory\Includes\ClassLocation::$post_type:
-                $desc = $meta[ 'offer_need_description' ] ?? [];
-                if ( count( $desc ) ) $desc = $meta[ 'offer_need_description' ][ 0 ];
-                else $desc = sprintf( _x( 'Entities, offers, and needs in %s', 'meta_description', 'community-directory' ), $post->post_title );
+                $desc = get_post_meta( $post->ID, '_meta_description', true );
+                if ( empty( $desc ) ) $desc = sprintf( _x( 'Entities, offers, and needs in %s', 'meta_description', 'community-directory' ), $post->post_title );
                 break;
             case \Maruf89\CommunityDirectory\Includes\ClassEntity::$post_type:
                 $meta = get_post_meta( $post->ID ) ?? [];
@@ -89,19 +90,19 @@ class ClassMeta {
      * Adds meta_description meta boxes to post types
      */
     public function add_metadata_metaboxes() {
-        $post_types = $this->_get_post_types_to_save_metadata();
+        global $screen;
 
-        foreach ( $post_types as $pt ) {
+        foreach ( $this->metaboxable_post_types as $pt ) {
             add_meta_box(
                 'meta_description',
                 pm__( 'Meta Description' ),
                 [ $this, 'add_metadata_metaboxes_callback'],
-                $screen
+                $pt
             );
         }
     }
 
-    public function save_metadata_metaboxes( int $post_id, object $post, bool $update ) {
+    public function save_metadata_metaboxes( int $post_id ) {        
         // Check if our nonce is set.
         if ( ! isset( $_POST['meta_description_nonce'] ) )
             return;
@@ -135,6 +136,7 @@ class ClassMeta {
     }
 
     public function add_metadata_metaboxes_callback( $post ) {
+        if ( !in_array( $post->post_type, $this->metaboxable_post_types ) ) return;
         // Add a nonce field so we can check for it later.
         wp_nonce_field( 'meta_description_nonce', 'meta_description_nonce' );
 
@@ -144,10 +146,13 @@ class ClassMeta {
     }
 
     private function _get_post_types_to_save_metadata():array {
+        if ( !$this->cd_loaded ) return [];
+        
         $post_types = $this->post_types;
-        if ( $this->cd_loaded &&
-             ( $index = array_search( \Maruf89\CommunityDirectory\Includes\ClassOffersNeeds::$post_type, $post_types ) !== false)
-        ) unset( $post_types[ $index ] );
+        $index = array_search( \Maruf89\CommunityDirectory\Includes\ClassOffersNeeds::$post_type, $post_types );
+        if ( gettype( $index ) === 'integer' ) unset( $post_types[ $index ] );
+        $index = array_search( \Maruf89\CommunityDirectory\Includes\ClassEntity::$post_type, $post_types );
+        if ( gettype( $index ) === 'integer' ) unset( $post_types[ $index ] );
 
         // Add metabox to pages as well
         array_push( $post_types, 'page' );
