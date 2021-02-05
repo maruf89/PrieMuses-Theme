@@ -2,7 +2,15 @@
 
 $instance = $args[ 'instance' ];
 $style = $args[ 'style_class' ] ?? '';
+$is_map = $args[ 'is_map' ] ?? false;
 $st = pm_template_styles( $style );
+
+if ( $is_map )
+    $tags = 'data-ga-event="map interaction"
+             data-ga-params=\'{"action":"popup",
+                               "type": "location",
+                               "value": "' . $instance->slug . '"
+                              }\'';
 
 if ( $photo = $instance->get_featured( 'cd_thumb' ) )
     $photo = [
@@ -13,7 +21,8 @@ if ( $photo = $instance->get_featured( 'cd_thumb' ) )
 ?>
 
 <a class="<?= $st[ 'outer' ] ?> cd-instance"
-   href="/<?= __( 'location', 'community-directory' ) . "/$instance->slug" ?>"
+   <?= $tags ?? '' ?>
+   href="<?= $instance->get_display_link() ?>"
    >
     <div class="<?= $st[ 'inner' ] ?> text-center">
         <?php load_from_templates( 'inc/listing-img', [ 'photo' => $photo ] ); ?>

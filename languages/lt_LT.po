@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PrieMuses 2020.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/PrieMuses-Theme\n"
-"POT-Creation-Date: 2021-02-04 17:10+0200\n"
-"PO-Revision-Date: 2021-02-04 17:11+0200\n"
+"POT-Creation-Date: 2021-02-05 08:58+0200\n"
+"PO-Revision-Date: 2021-02-05 09:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt_LT\n"
@@ -41,11 +41,24 @@ msgstr "Nieko Neradome"
 msgid "Sorry, nothing matched your search. Please try again."
 msgstr "Deja, nieko neradom pagal jūsų paiešką. Pabandykite kažką kito."
 
-#: src/Theme.php:104
+#: src/Modules/SEO/ClassMeta.php:15
+msgctxt "meta_description"
+msgid ""
+"Prie Musė is a directory for everyone in the Musė River region. It's a place "
+"for neighbors to barter, trade, to find and offer help, to build and "
+"maintain relationships with one another to improve our standard of living."
+msgstr ""
+"Prie Musės - tai katalogas visiems gyventantiems Musės upės regione. Tai "
+"vieta kaimynams vykdyti mainas, siūlyti paslaugas ir produktus bei paskelbti "
+"to ko ieškome. Tikslas skatinti gyvą bendravimą, kad sukurti naujus, ar "
+"sustiprinti jau egzistuojančius ryšius su kaimynas, kad pagerinti mūsų visų "
+"gyvenimo kokybę."
+
+#: src/Theme.php:107
 msgid "Main Menu"
 msgstr "Pagrindinis Meniu"
 
-#: src/Theme.php:105
+#: src/Theme.php:108
 msgid "Footer Menu"
 msgstr "Poraštės meniu"
 

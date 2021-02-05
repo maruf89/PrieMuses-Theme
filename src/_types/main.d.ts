@@ -35,5 +35,10 @@ interface cdData {
         defaultCoords:[number, number]
     },
     wp_nonce:string
-    edit_others_entities:boolean
+    edit_others_entities:boolean,
+    events: {
+        [name:string]: {
+            [name:string]:string
+        }
+    }
 }

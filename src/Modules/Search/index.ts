@@ -1,6 +1,7 @@
 /// <reference path="../../_types/main.d.ts" />
 
 import { getFormData } from '@/Helpers/index';
+import { gaElem, gaTrack } from 'ThirdParty/GAnalytics/customTracking.ts';
 
 let $:typeof jQuery = null;
 
@@ -17,7 +18,7 @@ export default {
     // elements
     els: {
         $search: null,
-        $input: null,
+        $triggerInput: null,
         $form: null, // the form in the overlay
         $bg: null,
         $bgSlot: null,
@@ -34,7 +35,7 @@ export default {
 		this.opts.inited = 1;
 
         this.els.$search = $('#searchBox');
-        this.els.$input = this.els.$search.find('.search-input');
+        this.els.$triggerInput = this.els.$search.find('.search-input');
         var $bg = this.els.$bg = $('#searchOverlay');
 
         this.els.$form = this.els.$bg.find('form');
@@ -45,7 +46,7 @@ export default {
         this.els.$searchErrors = $('#searchErrors');
 
         $bg.appendTo(document.body);
-        this.els.$input.on('focus', this.methods.loadBackdrop.bind(this));
+        this.els.$triggerInput.on('focus', this.methods.loadBackdrop.bind(this));
 
         $bg.on('click', '.click-trap', function(e) {
                 e.target == e.currentTarget && this.methods.onClose.call(this);
@@ -56,21 +57,31 @@ export default {
         this.methods.initSearchBy.call(this);
 	},
 	methods: {
+        /**
+         * Depending on what's being searched, shows or hides advanced option taxonomy sections
+         */
         initSearchBy() {
             const taxonomies = cdData.taxonomyType;
             const $optContainer = this.els.$advancedOptions;
-            const updateShowHideOptionSections = () => {
+            let previous;
+            const updateShowHideOptionSections = e => {
+                if (e && e.target) {
+                    if (previous === e.target) return;
+                    previous = e.target;
+                }
                 const curTypes = this.els.$searchBy.find('input:checked').data().searchTypes;
                 Object.keys(taxonomies).forEach(key => {
                     $optContainer.find('.' + taxonomies[key])[curTypes.includes(key) ? 'show' : 'hide']();
                 });
+                if (e && e.target) gaElem(e.target);
             }
             
             this.els.$searchBy.on('click', 'input', updateShowHideOptionSections);
-            updateShowHideOptionSections();
+            updateShowHideOptionSections(null);
         },
-		loadBackdrop() {
+		loadBackdrop(e) {
             this.els.$bg.addClass(this.opts.appendClass);
+            gaElem(e.target);
             setTimeout(function () {
                 this.els.$innerInput[0].focus();
             }.bind(this), 0);
@@ -80,11 +91,30 @@ export default {
         },
         toggleChecked(e) {
             const data = e.target.dataset;
-            const is = +e.target.checked;
-            if (+data.wasChecked === is) {
+            const is = +e.target.checked
+            const disable = +data.wasChecked === is;
+            
+            if (disable) {
                 e.target.checked = false;
                 data.wasChecked = 0;
             } else data.wasChecked = 1;
+
+            // ga tracking
+            try {
+                const tax = e.target.name.match(/\[([a-z-]+)\]/);
+                if (Array.isArray(tax)) {
+                    const taxonomy = tax[1];
+                    const value = e.target.nextElementSibling.textContent;
+                    const action = disable ? 'disable' : 'enable';
+                    gaTrack('interaction', {
+                        screen_name: 'search',
+                        action: `${action} ${taxonomy}`,
+                        value
+                    });
+                }
+            } catch (error) {
+                console.error(error);
+            }
         },
         onSubmit(e) {
             this.els.$bg.removeClass(this.opts.hasErrors);
@@ -92,7 +122,15 @@ export default {
             this.methods.triggerProcessing.call(this, true, false);
             
             this.els.$searchResultsContainer.empty();
-            var data:{search?:string, search_type?:string, taxonomy?:{}} = getFormData(this.els.$form);
+            var data:{search?:string, search_type?:string} = getFormData(this.els.$form);
+            let hasTaxonomies = false;
+            const taxonomy = Object.keys(data)
+                .filter(key => /^taxonomy/.test(key))
+                .reduce((acc, tax) => {
+                    hasTaxonomies = true;
+                    acc[tax.match(/\[([a-z-]+)\]/)[1]] = data[tax];
+                    return acc;
+                }, {});
             var errors = this.methods.validateSearch.call(this, data);
             var that = this;
 
@@ -107,6 +145,14 @@ export default {
                     },
                     beforeSend: function ( xhr ) {
                         xhr.setRequestHeader( 'X-WP-Nonce', pm.wp_nonce );
+                        const gaParams:any = {
+                            screen_name: 'search',
+                            action: `search ${data.search_type}`,
+                        }
+                        if (hasTaxonomies)
+                            Object.keys(taxonomy).forEach(tax => gaParams[`taxonomy[${tax}]`] = taxonomy[tax] );
+                        if (data.search) gaParams.search = data.search;
+                        gaTrack('interaction', gaParams);
                     },
                     dataType: 'json'
                 })

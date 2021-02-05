@@ -11,7 +11,7 @@ declare const _default: {
     };
     els: {
         $search: any;
-        $input: any;
+        $triggerInput: any;
         $form: any;
         $bg: any;
         $bgSlot: any;
@@ -23,7 +23,7 @@ declare const _default: {
     init: (_$: typeof jQuery) => void;
     methods: {
         initSearchBy(): void;
-        loadBackdrop(): void;
+        loadBackdrop(e: any): void;
         onClose(): void;
         toggleChecked(e: any): void;
         onSubmit(e: any): void;

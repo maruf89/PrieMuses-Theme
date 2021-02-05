@@ -9730,6 +9730,7 @@ ul.cd-need-list {
   border-radius: 0;
 }
 .search-form-bg {
+  font-size: 1rem;
   background: #fff;
   overflow: hidden;
   height: 2.5625em;

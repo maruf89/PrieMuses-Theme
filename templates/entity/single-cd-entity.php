@@ -62,7 +62,7 @@ $photo = $entity->get_featured();
             </div>
         </div>
         
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-xs-12 col-sm-6">
                 <?php ob_start(); ?>
                     <h2 class="text-center mb-4"><?= __( 'Offers', 'community-directory' ) ?></h2>

@@ -1,11 +1,11 @@
 <div id="searchOverlay" class="search-overlay">
-    <div class="inner-wrap click-trap">
-        <span class="dashicons dashicons-no click-trap icon-close"></span>
+    <div class="inner-wrap click-trap gtag"
+        data-ga-event="interaction"
+        data-ga-params='{"screen_name": "search", "action": "close", "via": "background"}'>
+        <span class="dashicons dashicons-no click-trap icon-close gtag"
+            data-ga-event="interaction"
+            data-ga-params='{"screen_name": "search", "action": "close", "via": "x-icon"}'></span>
         <div class="bg-color"></div>
-        <input type="checkbox"
-            class="show-advanced d-none"
-            value="advanced_search"
-            id="inputAdvancedSearch" />
         <div class="container-wrap">
             <form  class="content container">
                 <div class="search-options" id="searchOptions">
@@ -32,6 +32,8 @@
                                             class="form-check-input"
                                             value="entity"
                                             checked
+                                            data-ga-event="interaction"
+                                            data-ga-params='{"screen_name": "search", "action": "change primary filter", "value": "location"}'
                                             data-search-types='["location"]'
                                             id="inputRadioEntity" />
                                         <label for="inputRadioEntity"
@@ -44,9 +46,11 @@
                                     <div class="form-check">
                                         <input type="radio"
                                             name="search_type"
-                                            class="form-check-input search-option-update"
+                                            class="form-check-input"
                                             value="offer"
                                             data-search-types='["productService", "location"]'
+                                            data-ga-event="interaction"
+                                            data-ga-params='{"screen_name": "search", "action": "change primary filter", "value": "offer"}'
                                             id="inputRadioOffers" />
                                         <label for="inputRadioOffers"
                                             class="form-check-label">
@@ -58,9 +62,11 @@
                                     <div class="form-check">
                                         <input type="radio"
                                             name="search_type"
-                                            class="form-check-input search-option-update"
+                                            class="form-check-input"
                                             value="need"
                                             data-search-types='["productService", "location"]'
+                                            data-ga-event="interaction"
+                                            data-ga-params='{"screen_name": "search", "action": "change primary filter", "value": "need"}'
                                             id="inputRadioNeeds" />
                                         <label for="inputRadioNeeds"
                                             class="form-check-label">

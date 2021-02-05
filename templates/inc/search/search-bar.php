@@ -7,7 +7,10 @@
 			<input type="text"
 				   name="input"
 				   class="search-input form-control h-100 w-100"
-				   placeholder="<?= __( 'Search' ) ?>" />
+				   placeholder="<?= __( 'Search' ) ?>"
+                   data-ga-event="screenview"
+                   data-ga-params='{"screen_name": "search"}'
+                   />
 		</div>
 	</form>
 </div>

@@ -16,7 +16,10 @@
             <section id="masthead" class="col-xs-12 col-md-8" role="banner">
                 <div class="hgroup">
                     <?php ob_start() ?>
-                        <a href="<?php esc_url( home_url( '/' ) ); ?>/"><?php bloginfo('name'); ?></a>
+                        <a href="<?php esc_url( home_url( '/' ) ); ?>/"
+                           class="gtag"
+                           data-ga-event="click"
+                           data-ga-params='{"value": "header homepage link", "from": "<?= $pagename ?>"}'><?php bloginfo('name'); ?></a>
                     <?php $title = ob_get_clean(); ?>
                     <h1 class="site-title">
                         <?= sprintf( pm__( 'Directory of Everyone %s' ), $title ) ?>

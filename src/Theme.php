@@ -4,6 +4,7 @@ namespace Maruf89\PrieMuses;
 
 use Maruf89\PrieMuses\Includes\{NonceGenerator, CDTemplateLoader, CommunityDirectoryHelper};
 use Maruf89\PrieMuses\ThirdParty\ThirdParty;
+use Maruf89\PrieMuses\Modules\SEO\ClassMeta;
 
 class Theme {
 
@@ -35,6 +36,8 @@ class Theme {
         $this->themeoptions = get_option( 'themeoptions_priemuses' );
         $this->themedata    = wp_get_theme();
         $this->version      = $this->themedata->Version; // from style.css in the theme root folder
+        $this->community_directory_helper = CommunityDirectoryHelper::get_instance();
+        $this->meta         = new ClassMeta( CommunityDirectoryHelper::$plugin_loaded );
     }
 
     public function run() {
@@ -46,6 +49,8 @@ class Theme {
          */
         add_action( 'after_setup_theme', [ $this, 'themeSupports' ] );
 
+        
+
         /*
          * Add the CSS files and JavaScripts for the website output.
          */
@@ -55,6 +60,8 @@ class Theme {
         add_action( 'widgets_init', [ $this, 'load_widgets' ] );
         add_action( 'wp_head', [ $this, 'pingback_header' ] );
         add_action( 'wp_footer', [ $this, 'load_footer_scripts' ] );
+        add_action( 'wp_head', [ $this->meta, 'load_header_meta' ], 1 );
+        add_action( 'add_meta_boxes', [ $this->meta, 'add_metadata_metaboxes' ] );
 
         add_filter( 'document_title_separator', [ $this, 'document_title_separator' ] );
         add_filter( 'the_title', [ $this, 'title_not_empty' ] );
@@ -65,7 +72,7 @@ class Theme {
         add_filter( 'priemuses_template_dir', function ( $null ):string { return static::$template_dir; }, 10, 1 );
 
         
-        $this->community_directory_helper = CommunityDirectoryHelper::get_instance();
+        
         $this->cd_template_loader = new CDTemplateLoader( static::$template_dir );
         $this->third_party = new ThirdParty();
     }
