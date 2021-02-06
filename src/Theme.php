@@ -19,7 +19,7 @@ class Theme {
     public static string $template_dir = '/templates';
 
     public $themeoptions = [];
-    public string $version      = '1.1.3';
+    public string $version      = '1.1.4';
     public $themedata    = [];
 
     private string $assets_uri;
