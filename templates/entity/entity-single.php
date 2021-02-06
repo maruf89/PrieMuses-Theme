@@ -14,7 +14,7 @@ if ( $is_map )
 
 ?>
 
-<a class="single" <?= $tags ?? '' ?> href="<?= $instance->get_link() ?>">
+<a class="single block" <?= $tags ?? '' ?> href="<?= $instance->get_link() ?>">
     <?php load_from_templates( 'inc/listing-img', [ 'photo' => $instance->get_acf_picture() ] ); ?>
     <div class="<?= $st[ 'outer' ] ?> text-wrap">
         <h4 class="title"><?= $instance->get_acf_location_name() ?>

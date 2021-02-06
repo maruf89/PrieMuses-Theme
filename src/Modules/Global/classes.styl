@@ -1,7 +1,7 @@
-$carrot-height = 13
-[class*="carrot-"]
+$carot-height = 13
+[class*="carot-"]
     background $white
-    border 1px solid $cyan
+    border 1px solid $link-color
 
     &:before,
     &:after
@@ -13,45 +13,99 @@ $carrot-height = 13
         pointer-events: none
 
     &:before
-        border-color rgba($cyan, 0)
+        border-color rgba($link-color, 0)
 
     &:after
         border-color: rgba($white, 0)
 
-.carrot-top
+.carot-top
     &:before,
     &:after
         bottom 100%
         left 50%
 
     &:before
-        border-width em($carrot-height)
-        margin-left - em($carrot-height)
-        border-bottom-color $cyan
+        border-width em($carot-height)
+        margin-left - em($carot-height)
+        border-bottom-color $link-color
 
     &:after
-        border-width em($carrot-height - 1)
-        margin-left - em($carrot-height - 1)
+        border-width em($carot-height - 1)
+        margin-left - em($carot-height - 1)
         border-bottom-color $white
 
-.carrot-bot
+.carot-bot
     &:before,
     &:after
         top 100%
         left 50%
 
     &:before
-        border-width em($carrot-height)
-        margin-left - em($carrot-height)
-        border-top-color $cyan
+        border-width em($carot-height)
+        margin-left - em($carot-height)
+        border-top-color $link-color
 
     &:after
-        border-width em($carrot-height - 1)
-        margin-left - em($carrot-height - 1)
+        border-width em($carot-height - 1)
+        margin-left - em($carot-height - 1)
         border-top-color $white
-        
-.no-margin
-    margin 0 !important
 
-.no-padding
-    padding 0 !important
+.btn-primary
+    border-radius 0.25em
+
+.masonry
+    padding 0
+    display flex
+    flex-wrap wrap
+
+    &.spaced .block
+        padding 0.5em
+        margin-bottom 0.5em
+        box-sizing border-box
+
+    .block
+        display block
+        flex 1 1 100%
+
+        +media('md')
+            flex 1 1 50%
+            max-width 50%
+            margin 0 auto
+            
+            &:first-child:nth-last-child(2n + 2), 
+            &:first-child:nth-last-child(2n + 2) ~ .block
+                margin 0
+
+            &:first-child:nth-last-child(3n + 3), 
+            &:first-child:nth-last-child(3n + 3) ~ .block
+                flex 1 1 33.33%
+                max-width 33.33% 
+
+            // &:first-child:nth-last-child(n + 4), 
+            // &:first-child:nth-last-child(n + 4) ~ .block
+            //     flex 1 1 50%
+            //     max-width 50%
+
+            &:first-child:nth-last-child(5n + 5) ~ .block:nth-child(3),
+            &:first-child:nth-last-child(5n + 5) ~ .block:nth-child(4),
+            &:first-child:nth-last-child(5n + 5) ~ .block:nth-child(5),
+            &:first-child:nth-last-child(10n + 10) ~ .block:nth-child(8),
+            &:first-child:nth-last-child(10n + 10) ~ .block:nth-child(9),
+            &:first-child:nth-last-child(10n + 10) ~ .block:nth-child(10)
+                flex 1 1 33.33%
+                max-width 33.33% 
+
+            // &:first-child:nth-last-child(n + 6), 
+            // &:first-child:nth-last-child(n + 6) ~ .block
+            //     flex 1 1 33.33%
+            //     max-width 33.33% 
+
+            // &:first-child:nth-last-child(n + 8), 
+            // &:first-child:nth-last-child(n + 8) ~ .block
+            //     flex 1 1 50%
+            //     max-width 50%
+
+            // &:first-child:nth-last-child(n + 9), 
+            // &:first-child:nth-last-child(n + 9) ~ .block
+            //     flex 1 1 33.33%
+            //     max-width 33.33% 

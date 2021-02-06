@@ -11,8 +11,8 @@
                 <div class="search-options" id="searchOptions">
                     <?php load_from_templates( 'inc/search/advanced-options' ); ?>
                 </div>
-                <div class="search-form row">
-                    <div class="col-sm-12 col-centered mb-3">
+                <div class="search-form">
+                    <div class="col-centered mb-3">
                         <div class="form-group search-form-bg">
                             <label class="sr-only"><?= pm__( 'Search PrieMuses' ) ?></label>
                             <input type="text"
@@ -21,7 +21,7 @@
                                 placeholder="<?= __( 'Search' ) ?>" />
                         </div>
                     </div>
-                    <div class="col-sm-12 col-centered mb-3">
+                    <div class="col-centered mb-3">
                         <div class="container sep-box">
                             <legend><?= pm__( 'Search by...') ?></legend>
                             <div class="row" id="searchBy">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-12 col-centered mb-3">
+                    <div class="col-centered mb-3 submit-box">
                         <div class="container sep-box">
                             <button type="submit" class="btn-primary w-100">
                                 <?= pm__( 'Go!' ) ?>
@@ -87,11 +87,11 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-12 col-centered mb-3 search-results-box">
+                    <div class="col-centered mb-3 search-results-box">
                         <div class="container sep-box">
                             <h2 class="search-res-title"><?= pm__( 'Search Results' ); ?></h2>
                             <div class="search-res-wrap">
-                                <div class="search-res-container row" id="searchResultsContainer">
+                                <div class="search-res-container row masonry spaced" id="searchResultsContainer">
                                 </div>
                                 <div class="empty-search-res">
                                     <?= pm__( 'There were no results that matched your search…' ); ?>

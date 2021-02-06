@@ -65,13 +65,13 @@ $photo = $entity->get_featured();
         <div class="row mb-5">
             <div class="col-xs-12 col-sm-6">
                 <?php ob_start(); ?>
-                    <h2 class="text-center mb-4"><?= __( 'Offers', 'community-directory' ) ?></h2>
+                    <h2 class="text-center mb-4"><?= _n( 'Offer', 'Offers', 3, 'community-directory' ) ?></h2>
                 <?php $title = ob_get_clean(); ?>
                 <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' title='$title' type='offer' ]" ); ?>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <?php ob_start(); ?>
-                    <h2 class="text-center mb-4"><?= __( 'Needs', 'community-directory' ) ?></h2>
+                    <h2 class="text-center mb-4"><?= _n( 'Need', 'Needs', 3, 'community-directory' ) ?></h2>
                 <?php $title = ob_get_clean(); ?>
                 <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' title='$title' type='need' ]" ); ?>
             </div>

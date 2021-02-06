@@ -9,7 +9,7 @@
     if ( $type === 'need' ) $type_type = __( 'Type of Need', 'community-directory' );
 ?>
 
-<li id="<?= $instance->get_id() ?>" class="minified cd-on-single card">
+<li id="<?= $instance->get_id() ?>" class="cd-on-single card block">
     <div class="card-body">
         <h3 class="title"><?= $instance->post_title ?></h3>
         <?php if ( $instance->has_acf_image() ): ?>

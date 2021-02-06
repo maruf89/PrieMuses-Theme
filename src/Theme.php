@@ -70,8 +70,7 @@ class Theme {
         add_filter( 'image_size_names_choose', [ $this, 'my_editor_image_sizes' ] );
         add_filter( 'script_loader_tag', [ NonceGenerator::get_instance(), 'add_nonce_to_script' ], 10, 3 );
         add_filter( 'priemuses_template_dir', function ( $null ):string { return static::$template_dir; }, 10, 1 );
-
-        
+        add_filter('show_admin_bar', '__return_false');
         
         $this->cd_template_loader = new CDTemplateLoader( static::$template_dir );
         $this->third_party = new ThirdParty();

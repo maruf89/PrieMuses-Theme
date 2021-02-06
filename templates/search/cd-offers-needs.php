@@ -7,31 +7,18 @@ $hide_location = $args[ 'hide_location' ] ?? false;
 $hide_product_service = $args[ 'hide_product_service' ] ?? false;
 
 if ( !$hide_location ) $location = $instance->get_location();
-
-$photo = $instance->get_acf_image();
-if ( $photo ) {
-    $non_retina = $photo[ 'sizes' ][ 'cd_thumb' ];
-    $retina = $photo[ 'sizes' ][ 'cd_thumb@2x' ];
-}
 ?>
 
-<div class="on search-result">
+<div class="on search-result block">
     <a href="<?= $instance->get_link() ?>" title="<?= $instance->post_title ?>">
-        <?php if ( $photo ): ?>
-            <div class="img-container non-retina" style="background: url(<?= $non_retina ?>) no-repeat center;">
-                <img class="d-none d-sm-none" src="<?= $non_retina ?>" />
-            </div>
-            <div class="img-container retina" style="background: url(<?= $retina ?>) no-repeat center;">
-                <img class="d-none d-sm-none" src="<?= $retina ?>" />
-            </div>
-        <?php endif; ?>
+        <?php load_from_templates( 'inc/listing-img', [ 'photo' => $instance->get_acf_image() ] ); ?>
     </a>
 
     <div class="card p-3">
         <div class="copy">
             <a href="<?= $instance->get_link() ?>" title="<?= $instance->post_title ?>" class="main-link">
                 <h5 class="title"><?= $instance->post_title ?></h5>
-                <div class="excerpt"><?= $instance->get_acf_description() ?></div>
+                <p class="excerpt"><?= trim_copy( $instance->get_acf_description() ) ?></p>
             </a>
             <?php if ( !$hide_location ): ?>
                 <a href="<?= $location->get_display_link() ?>"

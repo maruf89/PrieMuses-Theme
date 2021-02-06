@@ -1,6 +1,7 @@
 export default function init() {
     initConnect();
     initFAQ();
+    addHashActiveClass();
 }
 
 function initFAQ():boolean {
@@ -34,4 +35,13 @@ function initConnect():boolean {
     });
 
     return true;
+}
+
+/**
+ * Adds an active class to any element matching the url's hash
+ */
+function addHashActiveClass() {
+    if (!window.location.hash) return;
+    const $el =  jQuery(window.location.hash);
+    if ($el.length) $el.addClass('active');
 }

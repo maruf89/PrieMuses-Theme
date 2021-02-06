@@ -2,18 +2,17 @@
 
 $instances = $args[ 'instances' ];
 $single_template = $args[ 'single_template' ];
+$classes = $args[ 'classes' ] ?? '';
 
 ?>
 
-<ul class="row location-list">
+<ul class="row location-list <?= $classes ?>">
     <?php foreach ( $instances as $instance ): ?>
-        <li class="col-6 p-2">
-            <?php
-                load_template( $single_template, false, array(
-                	'instance' => $instance,
-                	'style_class' => 'card'
-                ) );
-            ?>
-        </li>
+        <?php
+            load_template( $single_template, false, array(
+                'instance' => $instance,
+                'style_class' => 'card'
+            ) );
+        ?>
     <?php endforeach; ?>
 </ul>

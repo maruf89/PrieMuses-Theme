@@ -10,7 +10,7 @@
     if ( $type === 'need' ) $type_type = __( 'Type of Need', 'community-directory' );
 ?>
 
-<li id="<?= $instance->get_id() ?>" class="minified cd-on-single card">
+<li id="<?= $instance->get_id() ?>" class="minified cd-on-single card block">
     <div class="card-body">
         <a href="<?= $instance->get_link() ?>" title="<?= $instance->post_title ?>">
             <h3 class="title"><?= $instance->post_title ?></h3>

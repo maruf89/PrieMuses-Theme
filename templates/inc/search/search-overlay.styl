@@ -6,12 +6,14 @@
         position relative
         min-height 100%
         text-align center
-        padding 2em 1em 1em
+
+        +media('sm')
+            padding 2em 1em 1em
     
     .icon-close
         position absolute
-        right 1em
-        top 1em
+        right 1.1em
+        top 1.1em
         height 1.5em
         width 1.5em
         padding .25em
@@ -31,22 +33,28 @@
         z-index -1
         
     .container-wrap
-        border-radius 0.25em
-        background rgba(255,255,255,0.2)
         display inline-block
         width 100%
+        transition max-width 500ms ease-out
 
         +media('sm')
-            margin 5em 3em 3em
+            margin 3em 0 0
+            max-width em(720)
+            background rgba(255,255,255,0.2)
+            border-radius 0.25em
 
         +media('md')
-            max-width em(850);
-            transition max-width 500ms ease-out
+            margin 5em 3em 3em
+            max-width em(950)
 
 
     .content
         display flex
         text-align left
+        flex-wrap wrap-reverse
+
+        +media('sm')
+            flex-wrap nowrap
 
     &._appended
         display block
@@ -80,21 +88,26 @@
         width 100%
         background $white
         border-radius 0.25em
-        max-width em(200)
-        height auto
-        padding 0.5em
-        margin-right 1em
+        height min-content
+        padding 1em
+
+        +media('sm')
+            max-width em(250)
+            margin-right 1em
 
     .search-result
         @extends .col-12
         max-height em(425);
         overflow-y auto
         
-        +media('md')
+        +media('sm')
             width 50%
 
     .search-form
-        max-width em(650)
+        width 100%
+
+        +media('sm')
+            max-width em(700)
         
         .form-groupfirst-of-type
             width 100%
@@ -104,3 +117,16 @@
             background #FFF
             border-radius 0.25em
             padding 1em
+
+    .submit-box
+        position fixed
+        z-index 2
+        bottom .5em
+        left 0
+        width 100%
+
+        +media('sm')
+            position static
+
+        .sep-box
+            box-shadow 0 0 .25em $gold

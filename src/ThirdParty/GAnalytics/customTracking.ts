@@ -10,7 +10,7 @@ export function init(_$:JQueryStatic) {
     });
 }
 
-export function gaElem( elem:HTMLElement ) {
+export const gaElem = !can() ? () => {} : ( elem:HTMLElement ) => {
     const data = $(elem).data();
     const command = data.gaCommand || 'event';
     const eventName = data.gaEvent;
@@ -25,7 +25,7 @@ export function gaElem( elem:HTMLElement ) {
     gtag(command, eventName, params);
 }
 
-export function gaTrack(eventName:string, params:{} = {}, command:string = 'event') {
+export const gaTrack = !can() ? () => {} : (eventName:string, params:{} = {}, command:string = 'event') => {
     // console.log( 'gaTrack()', command, eventName, params );
     gtag(command, eventName, params);
 }

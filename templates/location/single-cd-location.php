@@ -6,7 +6,10 @@ get_header();
 
 global $post;
 
-$location_name = $post->post_name;
+$offers_title = '<h4 class="text-center mb-4">' .
+                sprintf( __( 'Offers in %s', 'community-directory' ), $post->post_title ) . '</h4>';
+$needs_title = '<h4 class="text-center mb-4">' .
+                sprintf( __( 'Needs in %s', 'community-directory' ), $post->post_title ) . '</h4>';
 
 ?>
 
@@ -18,24 +21,22 @@ $location_name = $post->post_name;
             </div>
         </div>
 
-        <div class="row mb-5 map-row">
+        <div class="row map-row">
             <?php do_shortcode( "[community_directory_list_entities type='map' location_id='$post->ID' ]" ); ?>
         </div>
 
-        <div class="row mb-5">
+        <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <h4 class="text-center mb-4"><?= sprintf( __( 'Offers in %s', 'community-directory' ), $post->post_title ) ?></h4>
-                <?php do_shortcode( "[community_directory_list_offers_needs minified=1 location_id='$post->ID' type='offer' ]" ); ?>
+                <?php do_shortcode( "[community_directory_list_offers_needs minified=1 title='$offers_title' location_id='$post->ID' type='offer' ]" ); ?>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <h4 class="text-center mb-4"><?= sprintf( __( 'Needs in %s', 'community-directory' ), $post->post_title ) ?></h4>
-                <?php do_shortcode( "[community_directory_list_offers_needs minified=1 location_id='$post->ID' type='need' ]" ); ?>
+                <?php do_shortcode( "[community_directory_list_offers_needs minified=1 title='$needs_title' location_id='$post->ID' type='need' ]" ); ?>
             </div>
         </div>
 
-        <div class="row mb-5">
+        <div class="row my-5">
             <h2 class="text-center col-xs-12 col-sm-12 mb-4"><?= sprintf( __( 'Entities in %s', 'community-directory' ), $post->post_title ) ?></h2>
-            <?php do_shortcode( "[community_directory_list_entities location_id='$post->ID' ]" ); ?>
+            <?php do_shortcode( "[community_directory_list_entities classes='masonry spaced' location_id='$post->ID' ]" ); ?>
         </div>
     </main>
 

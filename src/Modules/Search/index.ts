@@ -189,12 +189,8 @@ export default {
             const keys = Object.keys(data);
             const hasTax = keys.some(key => /^taxonomy/.test(key));
             
-            if (!hasTax && data.search == '') {
-                errors.push("Search must not be empty");
-            }
-            
-            if (data.search && data.search.length < 2) {
-                errors.push("The search must be at least 2 characters long");
+            if (data.search && data.search.length < 3) {
+                errors.push("The search must be at least 3 characters long");
             }
 
             return errors;

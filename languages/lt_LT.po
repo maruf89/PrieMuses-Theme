@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PrieMuses 2020.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/PrieMuses-Theme\n"
-"POT-Creation-Date: 2021-02-05 08:58+0200\n"
-"PO-Revision-Date: 2021-02-05 09:00+0200\n"
+"POT-Creation-Date: 2021-02-06 14:03+0200\n"
+"PO-Revision-Date: 2021-02-06 14:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt_LT\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 "X-Poedit-SearchPathExcluded-1: assets\n"
 
-#: header.php:22
+#: header.php:27
 #, php-format
 msgid "Directory of Everyone %s"
 msgstr "Visų Veiklų %s Katalogas"
@@ -41,7 +41,7 @@ msgstr "Nieko Neradome"
 msgid "Sorry, nothing matched your search. Please try again."
 msgstr "Deja, nieko neradom pagal jūsų paiešką. Pabandykite kažką kito."
 
-#: src/Modules/SEO/ClassMeta.php:15
+#: src/Modules/SEO/ClassMeta.php:24
 msgctxt "meta_description"
 msgid ""
 "Prie Musė is a directory for everyone in the Musė River region. It's a place "
@@ -54,11 +54,15 @@ msgstr ""
 "sustiprinti jau egzistuojančius ryšius su kaimynas, kad pagerinti mūsų visų "
 "gyvenimo kokybę."
 
-#: src/Theme.php:107
+#: src/Modules/SEO/ClassMeta.php:98
+msgid "Meta Description"
+msgstr ""
+
+#: src/Theme.php:110
 msgid "Main Menu"
 msgstr "Pagrindinis Meniu"
 
-#: src/Theme.php:108
+#: src/Theme.php:111
 msgid "Footer Menu"
 msgstr "Poraštės meniu"
 
@@ -86,6 +90,14 @@ msgstr "Jau turite sąskaitą?"
 msgid "Log in"
 msgstr "Prisiloginkite"
 
+#: templates/inc/nav/header-nav.php:6
+msgid "Menu"
+msgstr "Meniu"
+
+#: templates/inc/search/advanced-options.php:4
+msgid "Filters"
+msgstr "Filtrai"
+
 #: templates/inc/search/search-bar.php:6
 #: templates/inc/search/search-overlay.php:17
 msgid "Search PrieMuses"
@@ -95,19 +107,19 @@ msgstr "Paieškokite PrieMusėje"
 msgid "Search by..."
 msgstr "Paieškokite pagal…"
 
-#: templates/inc/search/search-overlay.php:79
+#: templates/inc/search/search-overlay.php:85
 msgid "Go!"
 msgstr "Davai!"
 
-#: templates/inc/search/search-overlay.php:86
+#: templates/inc/search/search-overlay.php:92
 msgid "Search Results"
 msgstr "Paieškos Rezultatai"
 
-#: templates/inc/search/search-overlay.php:91
+#: templates/inc/search/search-overlay.php:97
 msgid "There were no results that matched your search…"
 msgstr "Neradome tinkamų rezultatų…"
 
-#: templates/inc/search/search-overlay.php:94
+#: templates/inc/search/search-overlay.php:100
 msgid "Loading…"
 msgstr "Krauname…"
 

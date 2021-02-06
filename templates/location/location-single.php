@@ -19,16 +19,17 @@ if ( $photo = $instance->get_featured( 'cd_thumb' ) )
     ];
 
 ?>
-
-<a class="<?= $st[ 'outer' ] ?> cd-instance"
-   <?= $tags ?? '' ?>
-   href="<?= $instance->get_display_link() ?>"
-   >
-    <div class="<?= $st[ 'inner' ] ?> text-center">
-        <?php load_from_templates( 'inc/listing-img', [ 'photo' => $photo ] ); ?>
-        <div class="text">
-            <h4><?= $instance->display_name ?></h4>
-            <h5><?= sprintf( _n( '%d Inhabitant', '%d Inhabitants', $instance->active_inhabitants, 'community-directory' ), $instance->active_inhabitants ) ?></h5>
+<li class="block single">
+    <a class="<?= $st[ 'outer' ] ?> cd-instance"
+    <?= $tags ?? '' ?>
+    href="<?= $instance->get_display_link() ?>"
+    >
+        <div class="<?= $st[ 'inner' ] ?> text-center">
+            <?php load_from_templates( 'inc/listing-img', [ 'photo' => $photo ] ); ?>
+            <div class="text">
+                <h4><?= $instance->display_name ?></h4>
+                <h5><?= sprintf( _n( '%d Inhabitant', '%d Inhabitants', $instance->active_inhabitants, 'community-directory' ), $instance->active_inhabitants ) ?></h5>
+            </div>
         </div>
-    </div>
-</a>
+    </a>
+</li>

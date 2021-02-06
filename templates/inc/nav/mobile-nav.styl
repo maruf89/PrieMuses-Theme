@@ -1,0 +1,77 @@
+.access
+    position fixed
+    top 0
+    width 100%
+
+    +media('sm')
+        position static
+        width auto
+
+.header-nav
+    .hamburger
+        color $white
+        font-size 1rem
+
+        span
+            line-height unit($nav-height, px)
+
+        .icon
+            content "\f333"
+            font-size 2em
+            height auto
+            width auto
+        
+        .text
+            font-size 1.5em
+
+        .center
+            vertical-align middle
+            display inline-block
+
+    
+    .menu
+        display none
+
+    +media('sm')
+        .menu
+            display flex
+
+.menu-mobile
+    position relative
+    z-index 2345
+
+    .menu-item
+        a
+            font-weight bolder
+            text-decoration none
+            color $white
+            padding 1em 0 1em 1.5em
+            border-top 1px solid $white
+            border-top 1px solid $white
+            display block
+
+    .sub-menu
+        a
+            color $light-grey2
+            border-color $light-grey2 
+
+    .menu 
+        padding 0
+        
+        > .menu-item:first-child a
+            border-top none
+
+.mobile-hamburger-list
+    height calc('100vh - ' + unit($nav-height, px))
+    max-height 0
+    overflow hidden
+    width 100vw
+    position fixed
+    top unit($nav-height, px)
+    left 0
+    z-index 999
+    background $dark-blue
+    transition max-height 500ms ease-in
+
+.mobile-hamburger-input:checked + .mobile-hamburger-list
+    max-height 100vh

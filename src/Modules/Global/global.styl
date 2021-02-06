@@ -1,0 +1,11 @@
+// Needed so that the media styles get rendered in the correct order
+body
+    margin-top unit($nav-height, px)
+    +media('xs')
+        display block
+    +media('sm')
+        margin-top 0
+    +media('md')
+        display block
+    +media('lg')
+        display block
