@@ -9868,7 +9868,6 @@ main {
   overflow: hidden;
   height: 2.5625em;
   border-radius: 0.25rem;
-  display: inline;
 }
 .search-overlay {
   display: none;
