@@ -9407,6 +9407,13 @@ body {
   display: block;
   flex: 1 1 100%;
 }
+.format-html {
+  text-align: left;
+}
+.format-html ul,
+.format-html ol {
+  list-style: inherit;
+}
 .retina {
   display: none;
 }

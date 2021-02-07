@@ -15,15 +15,15 @@ $photo = $entity->get_featured();
     <main id="content" class="container">
         <div class="row mb-5">
             <?php if ( !empty( $photo ) ): ?>
-                <div class="col-xs-12 col-sm-12 profile-row">
+                <div class="col-12 col-md-12 profile-row">
                     <div class="profile-div" style="background: url(<?= $entity->get_featured() ?>) no-repeat center;">
                         <img src="<?= $entity->get_featured() ?>" class="d-none" />
                     </div>
                 </div>
             <?php endif; ?>
-            <div class="col-xs-12 col-sm-12 text-center mb-3">
+            <div class="col-12 col-md-12 text-center mb-3">
                 <div class="row">
-                    <div class="col-sm-6 m-auto">
+                    <div class="col-12 col-sm-10 col-md-6 m-auto format-html">
                         <h1><?= $entity->post_title ?></h1>
                         <div class="divider"></div>
                         <p>
@@ -35,7 +35,7 @@ $photo = $entity->get_featured();
         </div>
 
         <div class="row mb-5 text-center">
-            <div class="col-xs-12 col-sm-6 m-auto">
+            <div class="col-12 col-md-6 m-auto">
                 <h2><?= __( 'Preferred Method of Contact', 'community-directory' ) ?></h2>
                 <p><?= $entity->get_acf_contact_method() ?></p>
                 <?php if ( !empty( $entity->get_acf_email() ) ): ?>
@@ -63,13 +63,13 @@ $photo = $entity->get_featured();
         </div>
         
         <div class="row mb-5">
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-12 col-md-6">
                 <?php ob_start(); ?>
                     <h2 class="text-center mb-4"><?= _n( 'Offer', 'Offers', 3, 'community-directory' ) ?></h2>
                 <?php $title = ob_get_clean(); ?>
                 <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' title='$title' type='offer' ]" ); ?>
             </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-12 col-md-6">
                 <?php ob_start(); ?>
                     <h2 class="text-center mb-4"><?= _n( 'Need', 'Needs', 3, 'community-directory' ) ?></h2>
                 <?php $title = ob_get_clean(); ?>
