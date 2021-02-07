@@ -182,7 +182,6 @@ export default {
             );
 
             if (loading) this.els.$bg.removeClass(this.opts.noResults);
-            if (false) console.log('hi');
         },
         validateSearch(data) {
             var errors = [];
