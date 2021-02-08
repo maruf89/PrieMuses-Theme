@@ -1,6 +1,8 @@
 <?php
 
-use Maruf89\CommunityDirectory\Includes\ClassACF;
+use  Maruf89\PrieMuses\Includes\CommunityDirectoryHelper as CD;
+
+CD::plugin_required_page( true );
 
 get_header();
 

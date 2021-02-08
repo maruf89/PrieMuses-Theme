@@ -13,6 +13,19 @@ class CommunityDirectoryHelper {
 
     public static bool $plugin_loaded;
 
+    public static array $classes = array(
+        'ClassLocation' => 'Includes\ClassLocation',
+        'ClassEntity' => 'Includes\ClassEntity',
+        'ClassOffersNeeds' => 'Includes\ClassOffersNeeds',
+        'ClassRestEndPoints' => 'Includes\ClassRestEndPoints',
+        'ClassACF' => 'Includes\ClassACF',
+        'TaxonomyLocation' => 'Includes\TaxonomyLocation',
+        'TaxonomyProductService' => 'Includes\TaxonomyProductService',
+        'Location' => 'Includes\instances\Location',
+        'Entity' => 'Includes\instances\Entity',
+        'OfferNeed' => 'Includes\instances\OfferNeed',
+    );
+
     public static function get_instance():CommunityDirectoryHelper {
         if ( isset( static::$instance ) ) return static::$instance;
 
@@ -26,6 +39,20 @@ class CommunityDirectoryHelper {
                          class_exists( static::$class_base . 'Includes\ClassRestEndPoints' );
     }
 
+    /**
+     * Returns CommunityDirectory class if the plugin is loaded
+     */
+    public static function get( string $class_name ):string {
+        if ( static::$plugin_loaded &&
+             isset( static::$classes[ $class_name ] )
+        ) return static::$class_base . static::$classes[ $class_name ];
+
+        return '';
+    }
+
+    /**
+     * Get's plugin specific variables if the plugin is loaded
+     */
     public function get_array_vars():array {
         $vars = [];
         
@@ -45,6 +72,18 @@ class CommunityDirectoryHelper {
         }
 
         return $vars;
+    }
+
+    /**
+     * If the plugin's not loaded, renders and error and dies
+     */
+    public static function plugin_required_page( bool $include_header_footer = false ) {
+        if ( !static::$plugin_loaded ) {
+            if ( $include_header_footer ) get_header();
+            echo '<main><h3>You must enable the <a href="/wp/wp-admin/plugins.php">Community Directory plugin</a> to see this page</h3></main>';
+            if ( $include_header_footer) get_footer();
+            die();
+        }
     }
     
 }

@@ -1,6 +1,6 @@
 <?php
     $instance = $args[ 'instance' ];
-    $type = $args[ 'type' ];
+    $type = $instance->get_acf_type();
     $hide_location = $args[ 'hide_location' ] ?? false;
     $hide_product_service = $args[ 'hide_product_service' ] ?? false;
     if ( !$hide_location ) $location = $instance->get_location();
