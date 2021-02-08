@@ -51,7 +51,7 @@ class ClassMeta {
                 $meta = get_post_meta( $post->ID ) ?? [];
                 $desc = $meta[ $acf::$entity_about ] ?? [];
                 if ( count( $desc ) ) $desc = $meta[ $acf::$entity_about ][ 0 ];
-                break;
+                return $this->_meta_description( $desc, true, true );
 
         }
         $this->_meta_description( $desc, true );
