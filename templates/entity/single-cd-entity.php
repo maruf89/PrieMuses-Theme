@@ -61,6 +61,12 @@ $photo = $entity->get_featured();
                         <a href="<?= $entity->get_acf_facebook(); ?>" target=_blank><?= $entity->get_acf_facebook(); ?></a>
                 </p>
                 <?php endif; ?>
+                <?php if ( !empty( $entity->get_acf_youtube() ) ): ?>
+                    <p>
+                        <b><?= __( 'Youtube Channel', 'community-directory' ) ?>:</b> 
+                        <a href="<?= $entity->get_acf_youtube(); ?>" target=_blank><?= $entity->get_acf_youtube(); ?></a>
+                </p>
+                <?php endif; ?>
             </div>
         </div>
         
@@ -79,11 +85,20 @@ $photo = $entity->get_featured();
             </div>
         </div>
 
-        <div class="row mb-5 map-row">
-            <div class="col-12">
-                <?php do_shortcode( "[community_directory_list_entities type='map' entity_id='$post->ID' ]" ); ?>
+        <?php if ( $entity->share_location() ): ?>
+            <h3><?= pm__( 'Visiting Information' ) ?></h3>
+                <?php if ( !empty( $entity->get_acf_visit_info() ) ): ?>
+                    <p class="visit-info mb-3">
+                        <?= $entity->get_acf_visit_info(); ?>
+                    </p>
+                <?php endif; ?>
+                
+            <div class="row mb-5 map-row">
+                <div class="col-12">
+                    <?php do_shortcode( "[community_directory_list_entities type='map' entity_id='$post->ID' ]" ); ?>
+                </div>
             </div>
-        </div>
+        <?php endif; ?>
     </main>
 
 <?php get_footer(); ?>
