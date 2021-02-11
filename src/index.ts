@@ -4,12 +4,14 @@ import { init as gAnalyticsInit } from 'ThirdParty/GAnalytics/customTracking.ts'
 import { init as analyticsEvents } from '@/SEO/AnalyticsEvents.ts';
 import Search from '@/Search/index.ts';
 import initPages from '@/Templates/Page/page';
+import initEntity from 'templates/entity/entity';
 
 (function ($) {
 	$(() => {
         gAnalyticsInit($);
         analyticsEvents();
-		Search.init($);
+        Search.init($);
+        initEntity($);
         initPages();
         reCaptchaInit();
 	})

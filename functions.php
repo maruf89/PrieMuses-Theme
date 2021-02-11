@@ -105,3 +105,14 @@ function trim_copy( string $copy, int $limit = 100, bool $strip_tags = true, boo
     $ellipses_symbol = $ellipses ? '…' : '';
     return trim( mb_substr( $copy, 0, $limit, 'utf8' ) ) . $ellipses_symbol;
 }
+
+function formatted_die( string $message, bool $footer = false, bool $header = false, bool $is_html = false ) {
+    if ( $header ) get_header();
+        ?>
+        <main class="error death">
+            <?= $is_html ? $message : "<h2>$message</h2>" ?>
+        </main>
+        <?php
+    if ( $footer ) get_footer();
+    die();
+}

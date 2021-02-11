@@ -7,6 +7,65 @@
         margin 0
     
 /** single-cd-entity.php */
+
+.p-entity
+    position relative
+
+    .block-on-edit,
+    .inline-block-on-edit,
+    .empty-field
+        display none
+
+    .edit-bar
+        display none
+        position fixed
+        left 0
+        top em(150)
+        padding 0.5em 0.5em 0.5em 2em
+        background $light-grey2
+        border-radius 0.25em
+
+        /*span*/.enabled
+            display none
+
+        a
+            padding 1em
+            display block
+
+        +media('sm')
+            display inline-block
+
+    &.editable
+        .block-on-edit,
+        .empty-field
+            display block
+
+        .inline-block-on-edit
+            display inline-block
+
+        .hide-on-edit
+            display none
+        
+        .field
+            cursor pointer
+
+            &:empty
+                :after
+                    content 'Click here to edit'
+
+            &:hover
+                box-shadow 0 0 .25em $gold
+        
+        .edit-bar
+            /*span*/.enabled
+                display block
+
+            /*span*/.disabled
+                display none
+            
+
+        
+
 .profile-div
     padding-bottom 40%
     background-size cover !important
@@ -17,3 +76,4 @@
 
     +media('md')
         width 50%
+
