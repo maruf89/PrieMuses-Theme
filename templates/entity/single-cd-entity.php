@@ -17,11 +17,16 @@ if ( $post ) {
 }
 
 if ( !$entity )
-    formatted_die( sprintf( pm__( 'You must be %slogged in%s to see this page.' ), '<a href="/prisijunk">', '</a>' ), true );
+    formatted_die(
+        sprintf( pm__( 'You must be %slogged in%s to see this page.' ), '<a href="/prisijunk">', '</a>' ),
+        true
+    );
 
-$ACF = CD::get( 'ClassACF' );
+// Get the Community Directory ACF Class which contains the field keys as static variables
+$cdAcf = CD::get( 'ClassACF' );
 $entity_id = $entity->post_id;
 $photo = $entity->get_featured();
+$editable = $is_current_user;
 
 $default_or = pm__( 'Enter something here…' );
 $e_or = function ( $either, string $or = null ) use ($default_or) {
@@ -32,7 +37,7 @@ $e_or = function ( $either, string $or = null ) use ($default_or) {
 ?>
 
     <main class="container p-entity" id="entityPage">
-        <?php if ( $is_current_user ): ?>
+        <?php if ( $editable ): ?>
             <div class="edit-bar">
                 <a href="<?= $entity->get_edit_link() ?>" class="trigger-edit btn-primary" id="triggerEdit">
                     <span class="disabled"><?= pm__( 'Edit Profile') ?></span>
@@ -43,19 +48,13 @@ $e_or = function ( $either, string $or = null ) use ($default_or) {
         <div class="row mb-5">
             <?php if ( !empty( $photo ) ): ?>
                 <div class="col-12 col-md-12 profile-row">
-                    <div class="profile-div" style="background: url(<?= $entity->get_featured() ?>) no-repeat center;">
-                        <img src="<?= $entity->get_featured() ?>" class="d-none" />
-                    </div>
+                    <?php require 'require/profile-photo.php'; ?>
                 </div>
             <?php endif; ?>
             <div class="col-12 col-md-12 text-center mb-3">
                 <div class="row">
                     <div class="col-12 col-sm-10 col-md-6 m-auto format-html">
-                        <h1 class="field" data-type="post" data-value="post_title"><?= $entity->post_title ?></h1>
-                        <div class="divider"></div>
-                        <p class="field" data-type="meta" data-value="<?= $ACF = CD::get( 'ClassACF' ); ?>">
-                            <?= $entity->get_acf_about() ?>
-                        </p>
+                        <?php require 'require/profile-intro.php'; ?>
                     </div>
                 </div>
             </div>
@@ -63,41 +62,7 @@ $e_or = function ( $either, string $or = null ) use ($default_or) {
 
         <div class="row mb-5 text-center">
             <div class="col-12 col-md-6 m-auto">
-                <h2><?= __( 'Preferred Method of Contact', 'community-directory' ) ?></h2>
-                <p><?= $entity->get_acf_contact_method() ?></p>
-                <p class="<?= empty( $entity->get_acf_email() ) ? 'empty-field' : '' ?>">
-                    <b><?= __( 'Contact Email', 'community-directory' ) ?>:</b> 
-                    <a href="mailto:<?= $entity->get_acf_email(); ?>" class="hide-on-edit">
-                        <?= $entity->get_acf_email(); ?>
-                    </a>
-                    <span class="field inline-block-on-edit" data-type="meta" data-field="<?= $ACF::$entity_email ?>">
-                        <?= $e_or( $entity->get_acf_email() ); ?>
-                    </span>
-                </p>
-                <p class="<?= empty( $entity->get_acf_tel() ) ? 'empty-field' : '' ?>">
-                    <b><?= __( 'Contact Telephone', 'community-directory' ) ?>:</b> 
-                    <span class="field" data-type="meta" data-field="<?= $ACF::$entity_tel ?>">
-                        <?= $e_or( $entity->get_acf_tel() ); ?>
-                    </span>
-                </p>
-                <p class="<?= empty( $entity->get_acf_website() ) ? 'empty-field' : '' ?>">
-                    <b><?= __( 'Website', 'community-directory' ) ?>:</b> 
-                    <a class="hide-on-edit" href="<?= $entity->get_acf_website(); ?>" target=_blank>
-                        <?= $entity->get_acf_website(); ?>
-                    </a>
-                    <span class="field inline-block-on-edit" data-type="meta" data-field="<?= $ACF::$entity_facebook ?>">
-                        <?= $e_or( $entity->get_acf_website() ) ?>
-                    </span>
-                </p>
-                <p class="<?= empty( $entity->get_acf_facebook() ) ? 'empty-field' : '' ?>">
-                    <b><?= __( 'Facebook', 'community-directory' ) ?>:</b> 
-                    <a class="hide-on-edit" href="<?= $entity->get_acf_facebook(); ?>" target=_blank>
-                        <?= $entity->get_acf_facebook(); ?>
-                    </a>
-                    <span class="field inline-block-on-edit" data-type="meta" data-field="<?= $ACF::$entity_facebook ?>">
-                        <?= $e_or( $entity->get_acf_facebook() ) ?>
-                    </span>
-                </p>
+                <?php require 'require/profile-contact-methods.php'; ?>
             </div>
         </div>
         
@@ -116,11 +81,7 @@ $e_or = function ( $either, string $or = null ) use ($default_or) {
             </div>
         </div>
 
-        <div class="row mb-5 map-row">
-            <div class="col-12">
-                <?php do_shortcode( "[community_directory_list_entities type='map' entity_id='$post->ID' ]" ); ?>
-            </div>
-        </div>
+        <?php require 'require/profile-share-location.php' ?>
     </main>
 
 <?php get_footer(); ?>

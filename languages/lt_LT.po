@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PrieMuses 2020.11\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/PrieMuses-Theme\n"
-"POT-Creation-Date: 2021-02-06 14:03+0200\n"
-"PO-Revision-Date: 2021-02-06 14:03+0200\n"
+"POT-Creation-Date: 2021-02-11 11:42+0200\n"
+"PO-Revision-Date: 2021-02-11 11:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt_LT\n"
@@ -89,6 +89,10 @@ msgstr "Jau turite sąskaitą?"
 #: template-connect.php:12
 msgid "Log in"
 msgstr "Prisiloginkite"
+
+#: templates/entity/single-cd-entity.php:89
+msgid "Visiting Information"
+msgstr "Aplankymo Informacija"
 
 #: templates/inc/nav/header-nav.php:6
 msgid "Menu"
