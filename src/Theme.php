@@ -19,7 +19,7 @@ class Theme {
     public static string $template_dir = '/templates';
 
     public $themeoptions = [];
-    public string $version = '1.1.8';
+    public string $version = '1.1.9';
     public $themedata    = [];
 
     private string $assets_uri;
@@ -147,17 +147,15 @@ class Theme {
         wp_enqueue_script( 'jquery' );
         wp_enqueue_script( 'priemuses-js', "$this->assets_uri/dist/site.bundle.js", [], wp_get_environment_type() == 'production' ? $this->version : date("ymd-Gis"), 'all' );
         wp_localize_script( 'priemuses-js', 'pm',
-            array_merge(
-                array(
-                    'recaptch' => [
-                        'key_v2' => defined('RECAPTCHA_V2_KEY') ? RECAPTCHA_V2_KEY : '',
-                        'key_v3' => defined('RECAPTCHA_V3_KEY') ? RECAPTCHA_V3_KEY : ''
-                    ],
-                    'wp_nonce' => wp_create_nonce( 'wp_rest' ),
-                    'ajax_url' => admin_url( 'admin-ajax.php' ),
-                ),
-                $this->community_directory_helper->get_array_vars()
-            )
+            array(
+                'recaptcha' => [
+                    'key_v2' => defined('RECAPTCHA_V2_KEY') ? RECAPTCHA_V2_KEY : '',
+                    'key_v3' => defined('RECAPTCHA_V3_KEY') ? RECAPTCHA_V3_KEY : ''
+                ],
+                'wp_nonce' => wp_create_nonce( 'wp_rest' ),
+                'ajax_url' => admin_url( 'admin-ajax.php' ),
+                'translate' => front_end_translations(),
+            ),
         );
     }
 

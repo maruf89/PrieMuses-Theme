@@ -138,7 +138,7 @@ export default {
                 // is valid
                 $.ajax({
                     type: 'POST',
-                    url: pm.restBase + 'search/all',
+                    url: cdData.restBase + 'search/all',
                     data: {
                         ...data,
                         type: data.search_type,

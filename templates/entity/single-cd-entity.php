@@ -28,60 +28,74 @@ $entity_id = $entity->post_id;
 $photo = $entity->get_featured();
 $editable = $is_current_user;
 
-$default_or = pm__( 'Enter something here…' );
-$e_or = function ( $either, string $or = null ) use ($default_or) {
-    if ( !empty($either ) ) echo $either;
-    else echo !isset( $or ) ? $default_or : $or;
-}
+if ( $editable ) acf_form_head();
 
 ?>
 
-    <main class="container p-entity" id="entityPage">
+    <main class="container p-entity" id="entityPage" data-post-id="<?= $post->ID ?>">
         <?php if ( $editable ): ?>
+            <div class="loader-box"><div class="loader">Loading...</div></div>
+
+            <div class="edit-form block-on-edit">
+                <?php acf_form(); ?>
+                <div class="save-row text-center my-5">
+                    <a href="<?= $entity->get_edit_link() ?>" class="styled-btn btn-primary save-acf-form">
+                        <?= pm__( 'Save Changes' ) ?>
+                    </a>
+                    <a href="<?= $entity->get_edit_link() ?>" class="styled-btn btn-secondary toggle-edit">
+                        <?= pm__( 'Cancel' ) ?>
+                    </a>
+                </div>
+            </div>
             <div class="edit-bar">
-                <a href="<?= $entity->get_edit_link() ?>" class="trigger-edit btn-primary" id="triggerEdit">
-                    <span class="disabled"><?= pm__( 'Edit Profile') ?></span>
-                    <span class="enabled"><?= pm__( 'Save Changes' ) ?></span>
+                <a href="<?= $entity->get_edit_link() ?>" class="styled-btn btn-primary hide-on-edit toggle-edit">
+                    <?= pm__( 'Edit Profile') ?>
+                </a>
+                <a href="<?= $entity->get_edit_link() ?>" class="styled-btn btn-primary block-on-edit save-acf-form">
+                    <?= pm__( 'Save Changes' ) ?>
+                </a>
+                <a href="<?= $entity->get_edit_link() ?>" class="block-on-edit styled-btn btn-secondary toggle-edit">
+                    <?= pm__( 'Cancel' ) ?>
                 </a>
             </div>
         <?php endif; ?>
-        <div class="row mb-5">
-            <?php if ( !empty( $photo ) ): ?>
+        <div class="hide-on-edit">
+            <div class="row mb-5">
                 <div class="col-12 col-md-12 profile-row">
                     <?php require 'require/profile-photo.php'; ?>
                 </div>
-            <?php endif; ?>
-            <div class="col-12 col-md-12 text-center mb-3">
-                <div class="row">
-                    <div class="col-12 col-sm-10 col-md-6 m-auto format-html">
-                        <?php require 'require/profile-intro.php'; ?>
+                <div class="col-12 col-md-12 text-center mb-3">
+                    <div class="row">
+                        <div class="col-12 col-sm-10 col-md-6 m-auto format-html">
+                            <?php require 'require/profile-intro.php'; ?>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row mb-5 text-center">
-            <div class="col-12 col-md-6 m-auto">
-                <?php require 'require/profile-contact-methods.php'; ?>
+            <div class="row mb-5 text-center">
+                <div class="col-12 col-md-6 m-auto">
+                    <?php require 'require/profile-contact-methods.php'; ?>
+                </div>
             </div>
-        </div>
-        
-        <div class="row mb-5">
-            <div class="col-12 col-md-6">
-                <?php ob_start(); ?>
-                    <h2 class="text-center mb-4"><?= _n( 'Offer', 'Offers', 3, 'community-directory' ) ?></h2>
-                <?php $title = ob_get_clean(); ?>
-                <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' title='$title' type='offer' ]" ); ?>
+            
+            <div class="row mb-5">
+                <div class="col-12 col-md-6">
+                    <?php ob_start(); ?>
+                        <h2 class="text-center mb-4"><?= _n( 'Offer', 'Offers', 3, 'community-directory' ) ?></h2>
+                    <?php $title = ob_get_clean(); ?>
+                    <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' title='$title' type='offer' ]" ); ?>
+                </div>
+                <div class="col-12 col-md-6">
+                    <?php ob_start(); ?>
+                        <h2 class="text-center mb-4"><?= _n( 'Need', 'Needs', 3, 'community-directory' ) ?></h2>
+                    <?php $title = ob_get_clean(); ?>
+                    <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' title='$title' type='need' ]" ); ?>
+                </div>
             </div>
-            <div class="col-12 col-md-6">
-                <?php ob_start(); ?>
-                    <h2 class="text-center mb-4"><?= _n( 'Need', 'Needs', 3, 'community-directory' ) ?></h2>
-                <?php $title = ob_get_clean(); ?>
-                <?php do_shortcode( "[community_directory_list_offers_needs entity_id='$entity_id' title='$title' type='need' ]" ); ?>
-            </div>
-        </div>
 
-        <?php require 'require/profile-share-location.php' ?>
+            <?php require 'require/profile-share-location.php' ?>
+        </div>
     </main>
 
 <?php get_footer(); ?>

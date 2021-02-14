@@ -4,6 +4,7 @@ declare var window: any;
 declare var pm: any;
 declare var grecaptcha: any;
 declare const cdData:cdData;
+declare const acf:any;
 
 declare let jqXHR: any;
 
@@ -38,6 +39,14 @@ interface cdData {
     edit_others_entities:boolean,
     events: {
         [name:string]: {
+            [name:string]:string
+        }
+    }
+    acf: {
+        entity: {
+            [name:string]:string
+        }
+        offers_needs: {
             [name:string]:string
         }
     }

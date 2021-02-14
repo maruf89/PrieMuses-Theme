@@ -51,30 +51,6 @@ class CommunityDirectoryHelper {
     }
 
     /**
-     * Get's plugin specific variables if the plugin is loaded
-     */
-    public function get_array_vars():array {
-        $vars = [];
-        
-        if ( static::$plugin_loaded ) {
-            $ClassEntity = static::$class_base . 'Includes\ClassEntity';
-            $ClassLocation = static::$class_base . 'Includes\ClassLocation';
-            $ClassOffersNeeds = static::$class_base . 'Includes\ClassOffersNeeds';
-            $ClassRestEndPoints = static::$class_base . 'Includes\ClassRestEndPoints';
-            $vars = [
-                'restBase' => '/wp-json/' . $ClassRestEndPoints::get_instance()->rest_base,
-                'postType' => array(
-                    'entity' => $ClassEntity::$post_type,
-                    'location' => $ClassLocation::$post_type,
-                    'offersNeeds' => $ClassOffersNeeds::$post_type
-                ),
-            ];
-        }
-
-        return $vars;
-    }
-
-    /**
      * If the plugin's not loaded, renders and error and dies
      */
     public static function plugin_required_page( bool $include_header_footer = false ) {

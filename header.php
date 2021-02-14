@@ -6,7 +6,7 @@
 <link rel="profile" href="//gmpg.org/xfn/11">
 <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class( 'preload' ); ?>>
 <?php //wp_body_open hook if WordPress 5.2
     if ( function_exists( 'wp_body_open' ) ) { wp_body_open(); } ?>
 <a class="screen-reader-text" href="#content" title="<?php esc_attr_e( 'Skip to content', 'prie-muses' ); ?>"><?php _e( 'Skip to content', 'prie-muses' ); ?></a>

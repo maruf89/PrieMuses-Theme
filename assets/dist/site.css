@@ -9338,6 +9338,94 @@ fieldset:disabled .btn {
     transform: none;
   }
 }
+.loader,
+.loader:before,
+.loader:after {
+  background: #e6cc70;
+  animation: loading 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+.loader {
+  color: #e6cc70;
+  text-indent: -9999em;
+  margin: 88px auto;
+  position: relative;
+  font-size: 11px;
+  transform: translateZ(0);
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.loader:before {
+  left: -1.5em;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 1.5em;
+}
+@-webkit-keyframes hideIntoLeft {
+  0% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-90%);
+  }
+}
+@-moz-keyframes hideIntoLeft {
+  0% {
+    transform: translateX(0);
+  }
+  80% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-90%);
+  }
+}
+@-webkit-keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-90%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-moz-keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-90%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes loading {
+  0%, 80%, 100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+@-moz-keyframes loading {
+  0%, 80%, 100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
 body {
   margin-top: 49px;
 }
@@ -9390,8 +9478,11 @@ body {
   margin-left: -0.75em;
   border-top-color: #fff;
 }
-.btn-primary {
+.styled-btn {
+  padding: 1em;
+  text-align: center;
   border-radius: 0.25em;
+  display: inline-block;
 }
 .masonry {
   padding: 0;
@@ -9413,6 +9504,14 @@ body {
 .format-html ul,
 .format-html ol {
   list-style: inherit;
+}
+.default-form input,
+.default-form select {
+  padding: 0.5em 1em;
+}
+.required-ast {
+  color: #dd4d33;
+  font-weight: bolder;
 }
 .retina {
   display: none;
@@ -9817,54 +9916,137 @@ main {
 .p-entity .block-on-edit,
 .p-entity .inline-block-on-edit,
 .p-entity .empty-field {
-  display: none;
+  display: none !important;
 }
 .p-entity .edit-bar {
   display: none;
   position: fixed;
   left: 0;
-  top: 9.375em;
+  top: 6.25em;
   padding: 0.5em 0.5em 0.5em 2em;
   background: #c8c8c8;
   border-radius: 0.25em;
-/*span*/
+  color: #fff;
+  animation: 2500ms ease-in-out 1 hideIntoLeft;
+  transition: transform 500ms ease-in-out 2s;
+  transform: translateX(-90%);
 }
-.p-entity .edit-bar .enabled {
-  display: none;
+.p-entity .edit-bar:hover {
+  animation: 250ms ease-out 0 1 slideInFromLeft;
+  transition: transform 250ms ease-in 0s;
+  transform: translateX(0);
 }
 .p-entity .edit-bar a {
   padding: 1em;
   display: block;
+  transition: color;
+  color: inherit;
+  text-align: center;
+  margin-bottom: 0.25em;
+}
+.p-entity .edit-bar a:last-child {
+  margin: 0;
 }
 .p-entity.editable .block-on-edit,
 .p-entity.editable .empty-field {
-  display: block;
+  display: block !important;
 }
 .p-entity.editable .inline-block-on-edit {
-  display: inline-block;
+  display: inline-block !important;
 }
 .p-entity.editable .hide-on-edit {
+  display: none !important;
+}
+.p-entity .loader-box {
   display: none;
-}
-.p-entity.editable .field {
-  cursor: pointer;
-}
-.p-entity.editable .field:empty :after {
-  content: 'Click here to edit';
-}
-.p-entity.editable .field:hover {
+  position: fixed;
+  top: 25%;
+  right: 50%;
+  z-index: 3;
+  background: rgba(255,255,255,0.9);
+  padding: 1.25em;
+  width: 200px;
+  margin-right: -100px;
+  border-radius: 0.25em;
   box-shadow: 0 0 0.25em #e6cc70;
 }
-.p-entity.editable .edit-bar .enabled {
+.p-entity.loading .edit-bar,
+.p-entity.loading .save-row {
+  visibility: hidden;
+}
+.p-entity.loading .loader-box {
   display: block;
 }
-.p-entity.editable .edit-bar .disabled {
-  display: none;
+.p-entity.loading .acf-fields {
+  opacity: 0.5;
 }
-.profile-div {
+.p-entity .acf-fields > .acf-field {
+  border: none;
+  padding: 5px 12px;
+}
+.p-entity .acf-input {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.p-entity .acf-input input[type="text"],
+.p-entity .acf-input input[type="number"],
+.p-entity .acf-input input[type="email"],
+.p-entity .acf-input input[type="password"],
+.p-entity .acf-input input[type="tel"],
+.p-entity .acf-input input[type="url"],
+.p-entity .acf-input select {
+  padding: 10px 20px;
+}
+.p-profile {
   padding-bottom: 40%;
   background-size: cover !important;
   margin: 0 auto 1.5em;
+  position: relative;
+}
+.p-profile > img {
+  position: absolute;
+  z-index: -1;
+  max-width: 100%;
+}
+.editable .acf-field-cd-entity-picture .acf-label,
+.editable .acf-field-cd-entity-location-name .acf-label,
+.editable .acf-field-cd-entity-about .acf-label,
+.editable .acf-form-submit {
+  display: none !important;
+}
+.editable .acf-label,
+.editable .acf-true-false,
+.editable .acf-field-text {
+  text-align: center;
+}
+.editable .acf-label input,
+.editable .acf-true-false input,
+.editable .acf-field-text input {
+  font-size: 1em !important;
+}
+.editable .acf-true-false input {
+  width: 50px;
+  height: 50px;
+}
+.editable .acf-field-cd-entity-picture .acf-image-uploader {
+  display: flex;
+  justify-content: center;
+}
+.editable .acf-field-cd-entity-picture .image-wrap {
+  max-width: 100% !important;
+}
+.editable .acf-field-cd-entity-picture img {
+  max-height: 100% !important;
+}
+.editable .acf-field-cd-entity-location-name {
+  font-size: 2.5em;
+}
+.editable .acf-field-cd-entity-contact-method,
+.editable .acf-field-cd-entity-share-loc {
+  margin-top: 3em !important;
+  padding-top: 3em !important;
+  border-top: 1px solid #ececec !important;
 }
 .on-list {
   padding: 0;
@@ -10128,7 +10310,10 @@ main {
   .p-entity .edit-bar {
     display: inline-block;
   }
-  .profile-div {
+  .p-entity .acf-input {
+    width: 75%;
+  }
+  .p-profile {
     width: 75%;
   }
   .search-mod {
@@ -10203,7 +10388,7 @@ main {
   .p-connect > [class^="uwp-"] > h2 {
     margin: 0 0 0.75em 1em;
   }
-  .profile-div {
+  .p-profile {
     width: 50%;
   }
   .search-overlay .container-wrap {
@@ -10214,6 +10399,9 @@ main {
 @media only screen and (min-width: 1200px) {
   body {
     display: block;
+  }
+  .p-entity .acf-input {
+    width: 50%;
   }
 }
 

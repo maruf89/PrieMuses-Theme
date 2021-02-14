@@ -81,6 +81,13 @@ function load_from_templates( string $file_name, array $args = [], bool $require
     else return require $_template_file;
 }
 
+/**
+ * Returns an asset's path
+ */
+function asset( string $file, $type = 'image' ):string {
+    return get_template_directory_uri() . "/assets/$type/$file";
+}
+
 function pm_template_styles( string $style_class = '' ):array {
     // Optional classes that can be applied to the cards
     $styles = array(
@@ -116,3 +123,43 @@ function formatted_die( string $message, bool $footer = false, bool $header = fa
     if ( $footer ) get_footer();
     die();
 }
+
+function required_ast( array $field_group ) {
+    if ( $field_group[ 'required' ]): ?>
+        <span class="required-ast">*</span>
+    <?php endif;
+}
+
+// Deal with images uploaded from the front-end while allowing ACF to do it's thing
+function my_acf_pre_save_post($post_id) {
+
+    if ( !function_exists('wp_handle_upload') ) {
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+    }
+    
+    // Move file to media library
+    $movefile = wp_handle_upload( $_FILES['my_image_upload'], array('test_form' => false) );
+    
+    // If move was successful, insert WordPress attachment
+    if ( $movefile && !isset($movefile['error']) ) {
+        $wp_upload_dir = wp_upload_dir();
+        $attachment = array(
+        'guid' => $wp_upload_dir['url'] . '/' . basename($movefile['file']),
+        'post_mime_type' => $movefile['type'],
+        'post_title' => preg_replace( '/\.[^.]+$/', ”, basename($movefile['file']) ),
+        'post_content' => ”,
+        'post_status' => 'inherit'
+        );
+        $attach_id = wp_insert_attachment($attachment, $movefile['file']);
+        
+        // Assign the file as the featured image
+        set_post_thumbnail($post_id, $attach_id);
+        update_field('my_image_upload', $attach_id, $post_id);
+    
+    }
+    
+    return $post_id;
+    
+}
+
+add_filter('acf/pre_save_post' , 'my_acf_pre_save_post');

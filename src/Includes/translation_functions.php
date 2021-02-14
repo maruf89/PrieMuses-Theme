@@ -25,3 +25,9 @@ function pm_nx( string $key, $plural, $count, $context ):string {
 function pmesc_html__( string $key ):string { return esc_html__( $key, 'priemuses' ); }
 
 function pmesc_html_e( string $key ):string { return esc_html_e( $key, 'priemuses' ); }
+
+function front_end_translations():array {
+    return [
+        'form_submission_error' => pm__( 'There was an error submitting the form' ),
+    ];
+}

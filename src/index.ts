@@ -14,5 +14,7 @@ import initEntity from 'templates/entity/entity';
         initEntity($);
         initPages();
         reCaptchaInit();
+
+        // $(document.body).removeClass('preload');
 	})
 })(jQuery);
