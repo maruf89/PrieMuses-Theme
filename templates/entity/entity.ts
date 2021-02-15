@@ -108,12 +108,14 @@ class EntityPage {
             return alert(pm.translate.form_submission_error);
 
         const curSlug = this.getCurEntitySlug();
-        return window.location.href = window.location.href.replace(curSlug, slug);
+        const newUrl = window.location.pathname.replace(curSlug, slug);
+        window.location.href = newUrl;
     }
 
     private getCurEntitySlug():string {
-        let parts:string[] = window.location.href.split('/').reverse();
+        let parts:string[] = window.location.pathname.split('/').reverse();
         parts.length = 2;
+        // If url ends in a slash, discard it
         if (!parts[0]) parts.shift();
         return parts[0];
     }
