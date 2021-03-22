@@ -9429,6 +9429,10 @@ fieldset:disabled .btn {
 body {
   margin-top: 49px;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 [class*="carot-"] {
   background: #fff;
   border: 1px solid #33459a;
@@ -9983,6 +9987,11 @@ main {
 .p-entity .acf-fields > .acf-field {
   border: none;
   padding: 5px 12px;
+  margin-bottom: 2em;
+}
+.p-entity .acf-fields > .acf-field.acf-field-cd-entity-location-name,
+.p-entity .acf-fields > .acf-field.acf-field-cd-entity-about {
+  margin-bottom: 0;
 }
 .p-entity .acf-input {
   width: 100%;
@@ -10008,6 +10017,7 @@ main {
   position: absolute;
   z-index: -1;
   max-width: 100%;
+  max-height: 100%;
 }
 .editable .acf-field-cd-entity-picture .acf-label,
 .editable .acf-field-cd-entity-location-name .acf-label,
