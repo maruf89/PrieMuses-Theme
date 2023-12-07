@@ -4,14 +4,26 @@ namespace Maruf89\PrieMuses\Includes;
 
 class NonceGenerator {
 
-    /** @var String|null */
+    /** @var string */
     private $nonce;
-    private static NonceGenerator $instance;
 
-    public static function get_instance():NonceGenerator {
-        if ( isset( static::$instance ) ) return static::$instance;
+    private static ?NonceGenerator $instance = null;
 
-        return static::$instance = new NonceGenerator();
+    private function __construct() {
+        // Private constructor to prevent instantiation outside the class.
+    }
+
+    /**
+     * Get the singleton instance of the class.
+     *
+     * @return NonceGenerator
+     */
+    public static function get_instance(): NonceGenerator {
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
     }
 
     /**
@@ -19,8 +31,8 @@ class NonceGenerator {
      *
      * @return string
      */
-    public function get_nonce():string {
-        // generation occurs only when $this->nonce is still null
+    public function get_nonce(): string {
+        // Generation occurs only when $this->nonce is still null
         if (!$this->nonce) {
             $this->nonce = base64_encode(random_bytes(20));
         }
@@ -28,15 +40,26 @@ class NonceGenerator {
         return $this->nonce;
     }
 
-    public function add_nonce_to_script( $tag, $handle, $source ):string {
-        $nonce_generator = NonceGenerator::get_instance();
-        
-        $search = '/(src=\'[^\']+\')/';
-        $replace = '$1 nonce="' . $nonce_generator->get_nonce() . '"';
-        $subject = $tag;
+    /**
+     * Add nonce to the script tag.
+     *
+     * @param string $tag
+     * @param string $handle
+     * @param string $source
+     *
+     * @return string
+     */
+    public function add_nonce_to_script(string $tag, string $handle, string $source): string {
+        $nonce = $this->get_nonce();
 
-        $output = preg_replace( $search, $replace, $subject);
-        return $output;
+        $tag = preg_replace_callback(
+            '/(src=\'[^\']+\')/',
+            function ($matches) use ($nonce) {
+                return $matches[0] . ' nonce="' . esc_attr($nonce) . '"';
+            },
+            $tag
+        );
+
+        return $tag;
     }
-
 }
