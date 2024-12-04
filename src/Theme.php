@@ -58,8 +58,7 @@ class Theme {
         add_action( 'widgets_init', [ $this, 'load_widgets' ] );
         add_action( 'wp_head', [ $this, 'pingback_header' ] );
         add_action( 'wp_footer', [ $this, 'load_footer_scripts' ] );
-        add_action( 'wp_head', [ $this->meta, 'load_header_meta' ], 1 );
-        add_action( 'add_meta_boxes', [ $this->meta, 'add_metadata_metaboxes' ] );
+        
         add_action( 'plugins_loaded', [ $this, 'load_class_meta' ] );
 
         add_filter( 'document_title_separator', [ $this, 'document_title_separator' ] );

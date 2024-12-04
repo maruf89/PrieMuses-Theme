@@ -16,6 +16,9 @@ class ClassMeta {
         $this->metaboxable_post_types = $this->_get_post_types_to_save_metadata();
         foreach ( $this->metaboxable_post_types as $pt )
             add_action( "save_post_$pt", [ $this, 'save_metadata_metaboxes' ] );
+
+        add_action( 'wp_head', [ $this, 'load_header_meta' ], 1 );
+        add_action( 'add_meta_boxes', [ $this, 'add_metadata_metaboxes' ] );
     }
     
     public function load_header_meta() {
