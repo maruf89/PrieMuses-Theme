@@ -6,6 +6,8 @@
 
 namespace Maruf89\PrieMuses\Includes;
 
+use  Maruf89\PrieMuses\Includes\CommunityDirectoryHelper as CD;
+
 class CDTemplateLoader {
 
     private string $_template_dir;
@@ -13,7 +15,7 @@ class CDTemplateLoader {
 	private int $prefix_len;
 
 	public function __construct( string $template_dir = '' ) {
-		if ( !class_exists( 'Maruf89\CommunityDirectory\Includes\ClassPublic' ) ) {
+		if ( !CD::$plugin_loaded || !class_exists( 'Maruf89\CommunityDirectory\Includes\ClassPublic' ) ) {
 			return;
         }
 
