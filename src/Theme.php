@@ -59,7 +59,7 @@ class Theme {
         add_action( 'wp_head', [ $this, 'pingback_header' ] );
         add_action( 'wp_footer', [ $this, 'load_footer_scripts' ] );
         
-        add_action( 'plugins_loaded', [ $this, 'load_class_meta' ] );
+        add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
 
         add_filter( 'document_title_separator', [ $this, 'document_title_separator' ] );
         add_filter( 'the_title', [ $this, 'title_not_empty' ] );
@@ -121,9 +121,6 @@ class Theme {
                 'caption',
             ]
         );
-
-        $this->cd_template_loader = new CDTemplateLoader( static::$template_dir );
-        $this->third_party = new ThirdParty();
     }
 
     /**
@@ -249,9 +246,11 @@ class Theme {
 	    return $sizes;
 	}
 
-    public function load_class_meta() {
+    public function plugins_loaded() {
         $this->community_directory_helper = CommunityDirectoryHelper::get_instance();
         $this->meta         = new ClassMeta( CommunityDirectoryHelper::$plugin_loaded );
+        $this->cd_template_loader = new CDTemplateLoader( static::$template_dir );
+        $this->third_party = new ThirdParty();
     }
 }
 
