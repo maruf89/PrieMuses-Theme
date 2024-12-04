@@ -33,7 +33,8 @@ class CommunityDirectoryHelper {
     }
 
     public function __construct() {
-        static::$plugin_loaded = class_exists( static::$class_base . 'Includes\ClassLocation' ) &&
+        static::$plugin_loaded = is_plugin_active('community-directory/community-directory.php') &&
+                         class_exists( static::$class_base . 'Includes\ClassLocation' ) &&
                          class_exists( static::$class_base . 'Includes\ClassEntity' ) &&
                          class_exists( static::$class_base . 'Includes\ClassOffersNeeds' ) &&
                          class_exists( static::$class_base . 'Includes\ClassRestEndPoints' );

@@ -2,6 +2,8 @@
 
 namespace Maruf89\PrieMuses\Modules\SEO;
 
+use  Maruf89\PrieMuses\Includes\CommunityDirectoryHelper as CD;
+
 class ClassMeta {
     private bool $cd_loaded;
     private array $post_types;

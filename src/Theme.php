@@ -36,8 +36,6 @@ class Theme {
         $this->themeoptions = get_option( 'themeoptions_priemuses' );
         $this->themedata    = wp_get_theme();
         $this->version      = $this->themedata->Version; // from style.css in the theme root folder
-        $this->community_directory_helper = CommunityDirectoryHelper::get_instance();
-        $this->meta         = new ClassMeta( CommunityDirectoryHelper::$plugin_loaded );
     }
 
     public function run() {
@@ -62,6 +60,7 @@ class Theme {
         add_action( 'wp_footer', [ $this, 'load_footer_scripts' ] );
         add_action( 'wp_head', [ $this->meta, 'load_header_meta' ], 1 );
         add_action( 'add_meta_boxes', [ $this->meta, 'add_metadata_metaboxes' ] );
+        add_action( 'plugins_loaded', [ $this, 'load_class_meta' ] );
 
         add_filter( 'document_title_separator', [ $this, 'document_title_separator' ] );
         add_filter( 'the_title', [ $this, 'title_not_empty' ] );
@@ -250,6 +249,11 @@ class Theme {
 	    ));
 	    return $sizes;
 	}
+
+    public function load_class_meta() {
+        $this->community_directory_helper = CommunityDirectoryHelper::get_instance();
+        $this->meta         = new ClassMeta( CommunityDirectoryHelper::$plugin_loaded );
+    }
 }
 
 new Theme();
