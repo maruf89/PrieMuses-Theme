@@ -20,6 +20,11 @@ class Theme {
 
     public $themeoptions = [];
     public string $version = '1.1.10';
+    public string $name;
+    public string $prefix;
+    public bool $debug;
+    public string $notification;
+    public string $error;
     public $themedata    = [];
 
     private string $assets_uri;
